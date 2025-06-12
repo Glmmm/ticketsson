@@ -1,0 +1,19 @@
+section {
+    width: 100%;
+    min-height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.destaque {
+    width: 100%;
+    margin: 0 0 48px 0;
+}
+
+.cards {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 48px;
+}
