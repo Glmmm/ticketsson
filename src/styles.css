@@ -1,1 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../node_modules/@fortawesome/fontawesome-free/css/all.css";
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap');
+
+* {
+    font-family: "Onest", sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    background-color: #465053;
+}
+
+.gradient {
+    background: linear-gradient(88.04deg, #71DDFF 0.79%, #3AA4C6 9.81%, #126782 36.87%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0 !important;
+    margin-bottom: .5rem !important;
+    font-weight: 500;
+    line-height: 1.2 !important;
+}
