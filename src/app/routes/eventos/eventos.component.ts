@@ -13,12 +13,14 @@ import { IEventos } from '../../models/eventos.model';
 export class EventosComponent {
   tableHeader = [
     new header('Id', 'id', 'arrow-down-1-9'),
-    new header('Nome', 'nome', ''),
-    new header('Descrição', 'descricao', ''),
-    new header('Organizador', 'organizador', ''),
+    new header('Nome', 'nome', 'user'),
+    new header('Descrição', 'descricao', 'pen'),
+    new header('Organizador', 'organizador', 'user-tie'),
     new header('Data Inicio', 'dataInicio', 'calendar'),
     new header('Data Fim', 'dataFim', 'calendar'),
+    new header('CEP', 'cep', 'map-pin'),
     new header('Endereço', 'endereco', 'map-pin'),
+    new header('Ações', 'acoes', 'edit'),
   ];
   lista = [] as IEventos[];
   exibirFormulario: boolean = false;
@@ -30,6 +32,7 @@ export class EventosComponent {
     descricao: new FormControl(),
     dataInicio: new FormControl(),
     dataFim: new FormControl(),
+    cep: new FormControl(),
     endereco: new FormControl(),
     organizador: new FormControl(),
   });

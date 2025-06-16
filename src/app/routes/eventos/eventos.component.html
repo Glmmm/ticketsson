@@ -16,7 +16,12 @@
                     <td>{{item.organizador.nome}}</td>
                     <td>{{item.dataInicio}}</td>
                     <td>{{item.dataFim}}</td>
+                    <td>{{item.cep}}</td>
                     <td>{{item.endereco}}</td>
+                    <td>
+                        <button class="btn"> <span><i class="fa-solid fa-edit text-primary"></i></span></button>
+                        <button class="btn"> <span><i class="fa-solid fa-trash text-danger"></i></span></button>
+                    </td>
                 </tr>
             </tbody>
             <tfoot>
@@ -26,7 +31,7 @@
                                 Evento</span></button>
                     </td>
                     <td><input formControlName="nome" type="text" required></td>
-                    <td><input formControlName="descricao" type="text" required></td>
+                    <td><textarea formControlName="descricao" type="text" required></textarea> </td>
                     <td>
                         <select formControlName="organizador">
                             <option *ngFor="let item of lista" [value]="item.organizador.id" required>
@@ -39,6 +44,8 @@
                     </td>
                     <td><input formControlName="dataFim" [value]="form.get('dataFim')?.value | mask:'99/99/9999'"
                             type="date" maxlength="10" required></td>
+                    <td><input formControlName="cep" type="text" [value]="form.get('cep')?.value | mask:'99999-999'"
+                            maxlength="9" required></td>
                     <td><input formControlName="endereco" type="text" required></td>
                 </tr>
             </tfoot>

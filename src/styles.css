@@ -8,7 +8,7 @@
     --color-background-light: #F7F7F7;
     --color-text-dark: #333;
     --color-text-light: #F7F7F7;
-    --spacing-unit: 8px;
+    --spacing-unit: 16px;
     --border-radius: 8px;
 }
 
@@ -65,8 +65,7 @@ h6 {
 }
 
 .data-table thead th {
-    background-color: var(--color-primary);
-    color: var(--color-text-light);
+    color: var(--color-primary);
     font-weight: 700;
     text-transform: uppercase;
     font-size: 0.85em;
@@ -75,11 +74,7 @@ h6 {
 }
 
 .data-table tbody tr:nth-child(even) {
-    background-color: var(--color-background-light);
-}
-
-.data-table tbody tr.highlighted-row {
-    background-color: #e6f3f7;
+    background-color: #d9edf7;
 }
 
 .data-table tbody tr:hover {

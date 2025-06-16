@@ -7,5 +7,6 @@ export interface IEventos {
   dataInicio: string;
   dataFim: string;
   endereco: string;
+  cep: string;
   organizador: IOrganizador;
 }

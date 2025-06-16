@@ -12,10 +12,20 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EventosModule } from './routes/eventos/eventos.module';
 import { LoginModule } from './routes/login/login.module';
+import { IngressosModule } from './routes/ingressos/ingressos.module';
 
 @NgModule({
   declarations: [App, FooterComponent, HeaderComponent],
-  imports: [BrowserModule, AppRoutingModule, RouterLink, ReactiveFormsModule, OrganizadoraModule, EventosModule, LoginModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    RouterLink,
+    ReactiveFormsModule,
+    OrganizadoraModule,
+    EventosModule,
+    IngressosModule,
+    LoginModule,
+  ],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient(withFetch())],
   bootstrap: [App],
 })

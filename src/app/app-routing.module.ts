@@ -4,9 +4,11 @@ import { OrganizadorasComponent } from './routes/organizadoras/organizadoras.com
 import { EventosComponent } from './routes/eventos/eventos.component';
 import { LoginGuard } from './guard/login.guard';
 import { LoginComponent } from './routes/login/login.component';
+import { IngressosComponent } from './routes/ingressos/ingressos.component';
 
 const routes: Routes = [
   { path: 'organizadoras', component: OrganizadorasComponent, canActivate: [LoginGuard] },
+  { path: 'ingressos', component: IngressosComponent, canActivate: [LoginGuard] },
   { path: 'eventos', component: EventosComponent, canActivate: [LoginGuard] },
   { path: 'login', component: LoginComponent },
 ];

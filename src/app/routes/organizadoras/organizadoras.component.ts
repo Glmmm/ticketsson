@@ -12,12 +12,13 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class OrganizadorasComponent implements OnInit {
   tableHeader = [
-    new header('ID', 'id', ''),
-    new header('Nome', 'nome', ''),
+    new header('ID', 'id', 'arrow-down-1-9'),
+    new header('Nome', 'nome', 'user'),
     new header('Endereço', 'endereco', 'map-pin'),
     new header('CEP', 'cep', 'map-pin'),
     new header('Telefone', 'telefone', 'phone'),
     new header('Email', 'email', 'at'),
+    new header('Ações', 'acoes', 'edit'),
   ];
   lista = [] as IOrganizador[];
   exibirFormulario: boolean = false;
