@@ -1,0 +1,48 @@
+<form [formGroup]="form">
+
+    <div class="table-container">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th *ngFor="let item of tableHeader"> <i [class]="'fa-solid fa-'+item.icon"></i> {{item.header}}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of lista">
+                    <td>{{item.id}}</td>
+                    <td>{{item.nome}}</td>
+                    <td>{{item.descricao}}</td>
+                    <td>{{item.organizador.nome}}</td>
+                    <td>{{item.dataInicio}}</td>
+                    <td>{{item.dataFim}}</td>
+                    <td>{{item.endereco}}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>
+                        <button class="btn"><span class="text-success"><i class="fa fa-plus"></i> Adicionar
+                                Evento</span></button>
+                    </td>
+                    <td><input formControlName="nome" type="text" required></td>
+                    <td><input formControlName="descricao" type="text" required></td>
+                    <td>
+                        <select formControlName="organizador">
+                            <option *ngFor="let item of lista" [value]="item.organizador.id" required>
+                                {{item.organizador.nome}}
+                            </option>
+                        </select>
+                    </td>
+                    <td><input formControlName="dataInicio" [value]="form.get('dataInicio')?.value | mask: '99/99/9999'"
+                            type="date" maxlength="10" required>
+                    </td>
+                    <td><input formControlName="dataFim" [value]="form.get('dataFim')?.value | mask:'99/99/9999'"
+                            type="date" maxlength="10" required></td>
+                    <td><input formControlName="endereco" type="text" required></td>
+                </tr>
+            </tfoot>
+        </table>
+
+    </div>
+</form>
