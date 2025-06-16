@@ -1,4 +1,4 @@
-import { IEventos } from '../models/eventos.model';
+import { IEventos } from '../eventos.model';
 import { Organizadores } from './organizadores.mock';
 const organizadores = Organizadores;
 export const Eventos: IEventos[] = [

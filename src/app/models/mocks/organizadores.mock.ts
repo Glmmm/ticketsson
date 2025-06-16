@@ -1,4 +1,4 @@
-import { IOrganizador } from '../models/organizador.model';
+import { IOrganizador } from '../organizador.model';
 
 export const Organizadores: IOrganizador[] = [
   {

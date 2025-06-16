@@ -10,12 +10,12 @@ import { OrganizadoraModule } from './routes/organizadoras/organizadoras.module'
 import { provideHttpClient, withFetch } from '@angular/common/http';
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { EventosModule } from './routes/eventos/eventos.module';
+import { LoginModule } from './routes/login/login.module';
 
 @NgModule({
   declarations: [App, FooterComponent, HeaderComponent],
-  imports: [BrowserModule, AppRoutingModule, RouterLink, ReactiveFormsModule, OrganizadoraModule, EventosModule],
+  imports: [BrowserModule, AppRoutingModule, RouterLink, ReactiveFormsModule, OrganizadoraModule, EventosModule, LoginModule],
   providers: [provideBrowserGlobalErrorListeners(), provideHttpClient(withFetch())],
   bootstrap: [App],
 })

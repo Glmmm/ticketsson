@@ -1,4 +1,4 @@
-import { IIngressos } from '../models/ingressos.model';
+import { IIngressos } from '../ingressos.model';
 import { Eventos } from './eventos.mock';
 import { Organizadores } from './organizadores.mock';
 const eventos = Eventos;

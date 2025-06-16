@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Organizadores } from '../mocks/organizadores.mock';
 import { of } from 'rxjs';
+import { Organizadores } from '../models/mocks/organizadores.mock';
 
 @Injectable({
   providedIn: 'root',
