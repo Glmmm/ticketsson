@@ -33,7 +33,7 @@ public class IngresssoController {
         return ResponseEntity.ok().body(ingressoService.alterarIngresso(formIngresso));
     }
 
-    @DeleteMapping("/excluir-ingresso/{idIngresso}")
+    @DeleteMapping("/deletar-ingresso/{idIngresso}")
     public ResponseEntity<IngressoDto> excluiIngresso(@PathVariable Long idIngresso) {
         return ResponseEntity.ok().body(ingressoService.deletarIngresso(idIngresso));
     }

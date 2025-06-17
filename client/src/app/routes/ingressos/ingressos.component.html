@@ -18,7 +18,7 @@
                     <td>
                         <button (click)="habilitarEdicaoHandler(item)" class="btn"> <span><i
                                     [class]="habilitarEdicao ? 'fa-solid fa-times text-primary' :  'fa-solid fa-edit text-primary'"></i></span></button>
-                        <button (click)="excluirIngresso(item)" class="btn"> <span><i
+                        <button (click)="deletarIngresso(item)" class="btn"> <span><i
                                     class="fa-solid fa-trash text-danger"></i></span></button>
                     </td>
                 </tr>
@@ -26,7 +26,7 @@
             <tfoot>
                 <tr>
                     <td>
-                        <button (click)=" habilitarEdicao ?  alterarIngresso() : cadastarIngresso() " class="btn"><span
+                        <button (click)=" habilitarEdicao ? editarIngresso() : cadastarIngresso() " class="btn"><span
                                 class="text-success"><i [class]="habilitarEdicao ? 'fa-solid fa-edit':'fa fa-plus'"></i>
                                 {{habilitarEdicao ? 'Alterar Ingresso':'Cadastrar Ingresso'}}</span></button>
                     </td>

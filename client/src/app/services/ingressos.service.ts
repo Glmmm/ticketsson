@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Ingressos } from '../models/mocks/ingressos.mock';
 import { IIngressos } from '../models/ingressos.model';
 
@@ -9,21 +9,22 @@ import { IIngressos } from '../models/ingressos.model';
 })
 export class IngressosService {
   constructor(private http: HttpClient) {}
+  api = 'http://localhost:8080/ingresso';
 
-  listarIngressos() {
-    // return this.http.get('');
-    return of(Ingressos);
+  listarIngressos(): Observable<IIngressos[]> {
+    return this.http.get<IIngressos[]>(`${this.api}/listar-ingressos`);
+    // return of(Ingressos);
   }
 
-  alterarIngresso(ingresso: IIngressos) {
-    return this.http.put('', ingresso);
+  editarIngresso(form: any) {
+    return this.http.put(`${this.api}/editar-ingresso`, form);
   }
 
-  cadastrarIngresso(ingresso: IIngressos) {
-    return this.http.post('', ingresso);
+  cadastrarIngresso(form: any) {
+    return this.http.post(`${this.api}/cadastrar-ingresso`, form);
   }
 
-  excluirIngresso(id: number) {
-    return this.http.delete(`${id}`);
+  deletarIngresso(id: number) {
+    return this.http.delete(`${this.api}/deletar-ingresso/${id}`);
   }
 }

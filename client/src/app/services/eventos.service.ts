@@ -10,6 +10,7 @@ import { IEventos } from '../models/eventos.model';
 export class EventosService {
   constructor(private http: HttpClient) {}
   api = 'http://localhost:8080/eventos';
+
   listarEventos(): Observable<IEventos[]> {
     return this.http.get<IEventos[]>(`${this.api}/listar-eventos`);
     // return of(Eventos);
@@ -24,6 +25,6 @@ export class EventosService {
   }
 
   deletarEvento(id: number) {
-    return this.http.delete(`/deletar-evento/${id}`);
+    return this.http.delete(`${this.api}/deletar-evento/${id}`);
   }
 }

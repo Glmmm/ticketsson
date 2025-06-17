@@ -33,26 +33,41 @@ export class IngressosComponent {
   });
 
   ngOnInit() {
-    this.listarOrganizadores();
+    this.listarIngressos();
   }
 
-  listarOrganizadores() {
+  listarIngressos() {
     this.service.listarIngressos().subscribe((response) => {
       this.lista = response;
     });
   }
 
   cadastarIngresso() {
-    console.log('Cadastar Ingresso: ', this.form.value);
+    if (this.form.valid) {
+      this.service.cadastrarIngresso(this.form.value).subscribe(() => {
+        console.log('Cadastar Ingresso: ', this.form.value);
+      });
+    } else {
+      alert('Formulário inválido');
+    }
   }
 
-  alterarIngresso() {
-    console.log('Alterar Ingresso: ', this.form.value);
+  editarIngresso() {
+    if (this.form.valid) {
+      this.service.editarIngresso(this.form.value).subscribe(() => {
+        console.log('Alterar Ingresso: ', this.form.value);
+      });
+    } else {
+      alert('Formulário inválido');
+    }
   }
 
-  excluirIngresso(item: IIngressos) {
+  deletarIngresso(item: IIngressos) {
     if (confirm(`Deseja Excluir "${item.descricao}" de "${item.evento.nome}"?`)) {
-      console.log('Excluir ingresso', item.id);
+      this.service.deletarIngresso(item.id).subscribe(() => {
+        this.listarIngressos();
+        console.log('Excluir ingresso', item.id);
+      });
     }
   }
 
