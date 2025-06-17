@@ -1,10 +1,10 @@
-package br.com.seguranca.almirpapa;
+package br.com.seguranca.server;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class AlmirPapaApplicationTests {
+class ServerApplicationTests {
 
     @Test
     void contextLoads() {

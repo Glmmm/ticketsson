@@ -1,13 +1,13 @@
-package br.com.seguranca.almirpapa.service;
+package br.com.seguranca.server.service;
 
-import br.com.seguranca.almirpapa.dto.IngressoDto;
-import br.com.seguranca.almirpapa.form.FormIngresso;
-import br.com.seguranca.almirpapa.model.Evento;
-import br.com.seguranca.almirpapa.model.Ingresso;
-import br.com.seguranca.almirpapa.model.Organizador;
-import br.com.seguranca.almirpapa.repositories.EventoRepository;
-import br.com.seguranca.almirpapa.repositories.IngressoRepository;
-import br.com.seguranca.almirpapa.repositories.OrganizadorRepository;
+import br.com.seguranca.server.dto.IngressoDto;
+import br.com.seguranca.server.form.FormIngresso;
+import br.com.seguranca.server.model.Evento;
+import br.com.seguranca.server.model.Ingresso;
+import br.com.seguranca.server.model.Organizador;
+import br.com.seguranca.server.repositories.EventoRepository;
+import br.com.seguranca.server.repositories.IngressoRepository;
+import br.com.seguranca.server.repositories.OrganizadorRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;

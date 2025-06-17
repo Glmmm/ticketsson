@@ -1,6 +1,6 @@
-package br.com.seguranca.almirpapa.repositories;
+package br.com.seguranca.server.repositories;
 
-import br.com.seguranca.almirpapa.model.Evento;
+import br.com.seguranca.server.model.Evento;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

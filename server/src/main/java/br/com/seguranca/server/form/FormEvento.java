@@ -1,4 +1,4 @@
-package br.com.seguranca.almirpapa.form;
+package br.com.seguranca.server.form;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

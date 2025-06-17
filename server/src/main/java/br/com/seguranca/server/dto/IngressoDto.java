@@ -1,8 +1,8 @@
-package br.com.seguranca.almirpapa.dto;
+package br.com.seguranca.server.dto;
 
-import br.com.seguranca.almirpapa.model.Evento;
-import br.com.seguranca.almirpapa.model.Ingresso;
-import br.com.seguranca.almirpapa.model.Organizador;
+import br.com.seguranca.server.model.Evento;
+import br.com.seguranca.server.model.Ingresso;
+import br.com.seguranca.server.model.Organizador;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

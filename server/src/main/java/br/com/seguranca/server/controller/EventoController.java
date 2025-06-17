@@ -1,9 +1,8 @@
-package br.com.seguranca.almirpapa.controller;
+package br.com.seguranca.server.controller;
 
-import br.com.seguranca.almirpapa.dto.EventoDto;
-import br.com.seguranca.almirpapa.form.FormEvento;
-import br.com.seguranca.almirpapa.model.Evento;
-import br.com.seguranca.almirpapa.service.EventoService;
+import br.com.seguranca.server.dto.EventoDto;
+import br.com.seguranca.server.form.FormEvento;
+import br.com.seguranca.server.service.EventoService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

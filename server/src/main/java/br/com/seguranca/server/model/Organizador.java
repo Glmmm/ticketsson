@@ -1,4 +1,4 @@
-package br.com.seguranca.almirpapa.model;
+package br.com.seguranca.server.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

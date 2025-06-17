@@ -1,7 +1,7 @@
-package br.com.seguranca.almirpapa.controller;
+package br.com.seguranca.server.controller;
 
-import br.com.seguranca.almirpapa.form.FormUsuario;
-import br.com.seguranca.almirpapa.service.UsuarioService;
+import br.com.seguranca.server.form.FormUsuario;
+import br.com.seguranca.server.service.UsuarioService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

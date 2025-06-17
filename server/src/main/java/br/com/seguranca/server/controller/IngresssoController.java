@@ -1,8 +1,8 @@
-package br.com.seguranca.almirpapa.controller;
+package br.com.seguranca.server.controller;
 
-import br.com.seguranca.almirpapa.dto.IngressoDto;
-import br.com.seguranca.almirpapa.form.FormIngresso;
-import br.com.seguranca.almirpapa.service.IngressoService;
+import br.com.seguranca.server.dto.IngressoDto;
+import br.com.seguranca.server.form.FormIngresso;
+import br.com.seguranca.server.service.IngressoService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,8 +1,8 @@
-package br.com.seguranca.almirpapa.service;
+package br.com.seguranca.server.service;
 
-import br.com.seguranca.almirpapa.form.FormUsuario;
-import br.com.seguranca.almirpapa.model.Usuario;
-import br.com.seguranca.almirpapa.repositories.UsuarioRepository;
+import br.com.seguranca.server.form.FormUsuario;
+import br.com.seguranca.server.model.Usuario;
+import br.com.seguranca.server.repositories.UsuarioRepository;
 import org.springframework.stereotype.Service;
 
 @Service

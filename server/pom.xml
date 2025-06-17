@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>br.com.seguranca</groupId>
-    <artifactId>almir-papa</artifactId>
+    <artifactId>server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>almir-papa</name>
-    <description>almir-papa</description>
+    <name>server</name>
+    <description>server</description>
     <url/>
     <licenses>
         <license/>
