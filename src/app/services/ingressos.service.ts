@@ -18,9 +18,11 @@ export class IngressosService {
   alterarIngresso(ingresso: IIngressos) {
     return this.http.put('', ingresso);
   }
+
   cadastrarIngresso(ingresso: IIngressos) {
     return this.http.post('', ingresso);
   }
+
   excluirIngresso(id: number) {
     return this.http.delete(`${id}`);
   }

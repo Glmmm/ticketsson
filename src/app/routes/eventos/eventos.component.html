@@ -4,7 +4,8 @@
         <table class="data-table">
             <thead>
                 <tr>
-                    <th *ngFor="let item of tableHeader"> <i [class]="'fa-solid fa-'+item.icon"></i> {{item.header}}
+                    <th *ngFor="let item of tableHeader">
+                        <span><i [class]="'fa-solid fa-'+item.icon"></i> {{item.header}}</span>
                     </th>
                 </tr>
             </thead>
@@ -19,16 +20,19 @@
                     <td>{{item.cep}}</td>
                     <td>{{item.endereco}}</td>
                     <td>
-                        <button class="btn"> <span><i class="fa-solid fa-edit text-primary"></i></span></button>
-                        <button class="btn"> <span><i class="fa-solid fa-trash text-danger"></i></span></button>
+                        <button (click)="habilitarEdicaoHandler(item)" class="btn"> <span><i
+                                    [class]="habilitarEdicao ? 'fa-solid fa-times text-primary' :  'fa-solid fa-edit text-primary'"></i></span></button>
+                        <button (click)="excluirEvento(item)" class="btn"> <span><i
+                                    class="fa-solid fa-trash text-danger"></i></span></button>
                     </td>
                 </tr>
             </tbody>
             <tfoot>
                 <tr>
                     <td>
-                        <button class="btn"><span class="text-success"><i class="fa fa-plus"></i> Adicionar
-                                Evento</span></button>
+                        <button (click)=" habilitarEdicao ?  alterarEvento() : cadastrarEvento() " class="btn"><span
+                                class="text-success"><i [class]="habilitarEdicao ? 'fa-solid fa-edit':'fa fa-plus'"></i>
+                                {{habilitarEdicao ? 'Alterar Ingresso':'Cadastrar Ingresso'}}</span></button>
                     </td>
                     <td><input formControlName="nome" type="text" required></td>
                     <td><textarea formControlName="descricao" type="text" required></textarea> </td>
@@ -39,11 +43,11 @@
                             </option>
                         </select>
                     </td>
-                    <td><input formControlName="dataInicio" [value]="form.get('dataInicio')?.value | mask: '99/99/9999'"
-                            type="date" maxlength="10" required>
+                    <td><input formControlName="dataInicio" [value]="form.get('dataInicio')?.value" type="date"
+                            maxlength="10" required>
                     </td>
-                    <td><input formControlName="dataFim" [value]="form.get('dataFim')?.value | mask:'99/99/9999'"
-                            type="date" maxlength="10" required></td>
+                    <td><input formControlName="dataFim" [value]="form.get('dataFim')?.value" type="date" maxlength="10"
+                            required></td>
                     <td><input formControlName="cep" type="text" [value]="form.get('cep')?.value | mask:'99999-999'"
                             maxlength="9" required></td>
                     <td><input formControlName="endereco" type="text" required></td>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { header } from '../../utils/table.util';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { IIngressos } from '../../models/ingressos.model';
 import { IngressosService } from '../../services/ingressos.service';
 
@@ -17,20 +17,19 @@ export class IngressosComponent {
     new header('Evento', 'evento', 'user'),
     new header('Organizador', 'organizador', 'user-tie'),
     new header('Quantidade', 'qtd', 'ticket'),
-    new header('Ações', 'acoes', 'edit'),
+    new header('Ações', 'acoes', 'cog'),
   ];
   exibirFormulario: boolean = false;
   habilitarEdicao: boolean = false;
   lista = [] as IIngressos[];
-  ingressoSelecionado = {} as IIngressos;
   constructor(private service: IngressosService) {}
 
   form = new FormGroup({
     id: new FormControl(),
-    descricao: new FormControl(),
-    evento: new FormControl(),
-    organizador: new FormControl(),
-    qtd: new FormControl(),
+    descricao: new FormControl('', Validators.required),
+    evento: new FormControl(0, Validators.required),
+    organizador: new FormControl(0, Validators.required),
+    qtd: new FormControl(0, Validators.required),
   });
 
   ngOnInit() {
@@ -46,17 +45,19 @@ export class IngressosComponent {
   cadastarIngresso() {
     console.log('Cadastar Ingresso: ', this.form.value);
   }
-  excluirIngresso(id: number) {
-    console.log('Excluir Ingresso: ', id);
+
+  alterarIngresso() {
+    console.log('Alterar Ingresso: ', this.form.value);
   }
 
-  alterarIngresso(ingresso: IIngressos) {
-    console.log('Alterar Ingresso: ', ingresso);
+  excluirIngresso(item: IIngressos) {
+    if (confirm(`Deseja Excluir "${item.descricao}" de "${item.evento.nome}"?`)) {
+      console.log('Excluir ingresso', item.id);
+    }
   }
 
   habilitarEdicaoHandler(item: IIngressos) {
     this.habilitarEdicao = !this.habilitarEdicao;
-    this.ingressoSelecionado = item;
     if (this.habilitarEdicao) {
       this.form.get('id')?.setValue(item.id);
       this.form.get('descricao')?.setValue(item.descricao);
@@ -64,7 +65,6 @@ export class IngressosComponent {
       this.form.get('organizador')?.setValue(item.organizador.id);
       this.form.get('qtd')?.setValue(item.qtd);
     } else {
-      this.ingressoSelecionado = {} as IIngressos;
       this.form.reset();
     }
   }

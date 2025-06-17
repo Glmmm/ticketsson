@@ -18,19 +18,20 @@ export class OrganizadorasComponent implements OnInit {
     new header('CEP', 'cep', 'map-pin'),
     new header('Telefone', 'telefone', 'phone'),
     new header('Email', 'email', 'at'),
-    new header('Ações', 'acoes', 'edit'),
+    new header('Ações', 'acoes', 'cog'),
   ];
   lista = [] as IOrganizador[];
   exibirFormulario: boolean = false;
+  habilitarEdicao: boolean = false;
   constructor(private service: OrganizadorService) {}
 
   form = new FormGroup({
     id: new FormControl(),
-    nome: new FormControl(),
-    endereco: new FormControl(),
-    cep: new FormControl(),
-    telefone: new FormControl(),
-    email: new FormControl('', Validators.email),
+    nome: new FormControl('', Validators.required),
+    endereco: new FormControl('', Validators.required),
+    cep: new FormControl('', Validators.required),
+    telefone: new FormControl('', Validators.required),
+    email: new FormControl('', [Validators.required, Validators.email]),
   });
 
   ngOnInit() {
@@ -43,9 +44,36 @@ export class OrganizadorasComponent implements OnInit {
     });
   }
 
-  cadastrarOrganizador() {}
+  cadastrarOrganizador() {
+    console.log(this.form.valid);
+    if (this.form.valid) {
+      console.log('Cadastrar Organizador', this.form.value);
+    } else {
+      alert('Formulario Inválido');
+    }
+  }
 
-  changeExibirFormulario() {
-    this.exibirFormulario = !this.exibirFormulario;
+  alterarOrganizador() {
+    console.log('Alterar Organizador', this.form.value);
+  }
+
+  excluirOrganizador(item: IOrganizador) {
+    if (confirm(`Deseja Excluir o "${item.nome}"?`)) {
+      console.log('Excluir Organizador', item);
+    }
+  }
+
+  habilitarEdicaoHandler(item: IOrganizador) {
+    this.habilitarEdicao = !this.habilitarEdicao;
+    if (this.habilitarEdicao) {
+      this.form.get('id')?.setValue(item.id);
+      this.form.get('nome')?.setValue(item.nome);
+      this.form.get('endereco')?.setValue(item.endereco);
+      this.form.get('cep')?.setValue(item.cep);
+      this.form.get('telefone')?.setValue(item.telefone);
+      this.form.get('email')?.setValue(item.email);
+    } else {
+      this.form.reset();
+    }
   }
 }

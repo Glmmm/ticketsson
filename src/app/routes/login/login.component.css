@@ -1,0 +1,19 @@
+section {
+    color: #f7f7f7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+div {
+    min-width: 300px;
+    width: 33dvw;
+}
+
+.btn {
+    width: 100%;
+    color: #f7f7f7;
+    padding: 8px;
+    background-color: #126782;
+}

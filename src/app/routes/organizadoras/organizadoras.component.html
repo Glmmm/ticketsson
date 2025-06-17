@@ -17,8 +17,10 @@
                     <td>{{item.telefone}}</td>
                     <td>{{item.email}}</td>
                     <td>
-                        <button class="btn"> <span><i class="fa-solid fa-edit text-primary"></i></span></button>
-                        <button class="btn"> <span><i class="fa-solid fa-trash text-danger"></i></span></button>
+                        <button (click)="habilitarEdicaoHandler(item)" class="btn"> <span><i
+                                    [class]="habilitarEdicao ? 'fa-solid fa-times text-primary' : 'fa-solid fa-edit text-primary'"></i></span></button>
+                        <button (click)="excluirOrganizador(item)" class="btn"> <span><i
+                                    class="fa-solid fa-trash text-danger"></i></span></button>
                     </td>
                 </tr>
             </tbody>
@@ -26,8 +28,10 @@
 
                 <tr>
                     <td>
-                        <button class="btn"><span class="text-success"><i class="fa fa-plus"></i>
-                                Adicionar Organizador</span></button>
+                        <button (click)=" habilitarEdicao ?  alterarOrganizador() :cadastrarOrganizador() "
+                            class="btn"><span class="text-success"><i
+                                    [class]="habilitarEdicao ? 'fa-solid fa-edit':'fa fa-plus'"></i>
+                                {{habilitarEdicao ? 'Alterar Ingresso':'Cadastrar Ingresso'}}</span></button>
                     </td>
                     <td><input formControlName="nome" type="text"></td>
                     <td><input formControlName="endereco" type="text"></td>
@@ -36,7 +40,7 @@
                     </td>
                     <td><input formControlName="telefone" [value]="form.get('telefone')?.value | mask:'(99) 99999-9999'"
                             type="text" maxlength="15"></td>
-                    <td><input formControlName="email" type="text"></td>
+                    <td><input formControlName="email" type="email"></td>
                 </tr>
             </tfoot>
         </table>
