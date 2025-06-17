@@ -1,0 +1,19 @@
+<section>
+    <form [formGroup]="form">
+        <div class="input">
+            <label for="user">Usuário:</label>
+            <input type="email" formControlName="user" autocomplete="username" placeholder="Ex: ticketsson@email.com"
+                required>
+        </div>
+        <div class="input">
+            <label for="password">Senha:</label>
+            <input type="password" formControlName="password" autocomplete="current-password" required>
+        </div>
+    </form>
+    <div>
+        <br>
+        <button class="btn" (click)="validarLogin()">
+            <i class="fa-solid fa-door-closed"></i> Entrar
+        </button>
+    </div>
+</section>
