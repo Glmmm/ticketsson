@@ -45,21 +45,33 @@ export class OrganizadorasComponent implements OnInit {
   }
 
   cadastrarOrganizador() {
-    console.log(this.form.valid);
     if (this.form.valid) {
-      console.log('Cadastrar Organizador', this.form.value);
+      this.service.cadastrarOrganizador(this.form.value).subscribe(() => {
+        this.listarOrganizadores();
+        console.log('Cadastrar Organizador', this.form.value);
+      });
     } else {
       alert('Formulario Inválido');
     }
   }
 
-  alterarOrganizador() {
-    console.log('Alterar Organizador', this.form.value);
+  editarOrganizador() {
+    if (this.form.valid) {
+      this.service.editarOrganizador(this.form.value).subscribe(() => {
+        this.listarOrganizadores();
+        console.log('Alterar Organizador', this.form.value);
+      });
+    } else {
+      alert('Formulário inválido');
+    }
   }
 
-  excluirOrganizador(item: IOrganizador) {
+  deletarOrganizador(item: IOrganizador) {
     if (confirm(`Deseja Excluir o "${item.nome}"?`)) {
-      console.log('Excluir Organizador', item);
+      this.service.deletarOrganizador(item.id).subscribe(() => {
+        this.listarOrganizadores();
+        console.log('Excluir Organizador', item);
+      });
     }
   }
 

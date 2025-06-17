@@ -49,20 +49,32 @@ export class EventosComponent {
   }
 
   cadastrarEvento() {
-    console.log('Cadastrar Evento:', this.form.value);
+    if (this.form.valid) {
+      this.service.cadastrarEvento(this.form.value).subscribe(() => {
+        this.listarEventos();
+        console.log('Cadastrar Evento:', this.form.value);
+      });
+    } else {
+      alert('Formulário inválido');
+    }
   }
 
   editarEvento() {
-    this.service.editarEvento(this.form.value).subscribe(() => {
-      console.log('Alterar Evento: ', this.form.value);
-    });
+    if (this.form.valid) {
+      this.service.editarEvento(this.form.value).subscribe(() => {
+        this.listarEventos();
+        console.log('Alterar Evento: ', this.form.value);
+      });
+    } else {
+      alert('Formulário inválido');
+    }
   }
 
   deletarEvento(item: IEventos) {
     if (confirm(`Deseja Excluir "${item.descricao}"?`)) {
       this.service.deletarEvento(item.id).subscribe(() => {
-        console.log('Excluir evento', item.id);
         this.listarEventos();
+        console.log('Excluir evento', item.id);
       });
     }
   }

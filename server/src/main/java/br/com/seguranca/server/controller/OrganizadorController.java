@@ -23,7 +23,7 @@ public class OrganizadorController {
         return ResponseEntity.ok().body(organizadorService.listarOrganizadores());
     }
 
-    @PostMapping("/cadastar-organizador")
+    @PostMapping("/cadastrar-organizador")
     public ResponseEntity<OrganizadorDto> cadastrarNovoOrganizador(@RequestBody FormOrganizador dados){
         return ResponseEntity.ok().body(organizadorService.cadastrarOrganizador(dados));
     }

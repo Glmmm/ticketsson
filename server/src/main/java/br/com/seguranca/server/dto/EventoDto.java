@@ -1,6 +1,7 @@
 package br.com.seguranca.server.dto;
 
 import br.com.seguranca.server.model.Evento;
+import br.com.seguranca.server.model.Organizador;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,7 @@ public class EventoDto {
     private LocalDate dataFim;
     private String endereco;
     private String cep;
+    private Organizador organizador;
 
     public static EventoDto converter(Evento evento) {
         return new EventoDto(
@@ -28,7 +30,9 @@ public class EventoDto {
                 evento.getDataInicio(),
                 evento.getDataFim(),
                 evento.getEndereco(),
-                evento.getCep()
+                evento.getCep(),
+                evento.getOrganizador()
+
         );
     }
 }

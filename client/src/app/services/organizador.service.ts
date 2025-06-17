@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Organizadores } from '../models/mocks/organizadores.mock';
 import { IOrganizador } from '../models/organizador.model';
 
@@ -9,20 +9,21 @@ import { IOrganizador } from '../models/organizador.model';
 })
 export class OrganizadorService {
   constructor(private http: HttpClient) {}
+  api = 'http://localhost:8080/organizador';
 
-  listarOrganizadores() {
-    return of(Organizadores);
+  listarOrganizadores(): Observable<IOrganizador[]> {
+    return this.http.get<IOrganizador[]>(`${this.api}/listar-organizadores`);
   }
 
-  alterarOrganizador(Organizador: IOrganizador) {
-    return this.http.put('', Organizador);
+  editarOrganizador(form: any) {
+    return this.http.put(`${this.api}/editar-organizador`, form);
   }
 
-  cadastrarOrganizador(Organizador: IOrganizador) {
-    return this.http.post('', Organizador);
+  cadastrarOrganizador(form: any) {
+    return this.http.post(`${this.api}/cadastrar-organizador`, form);
   }
 
-  excluirOrganizador(id: number) {
-    return this.http.delete(`${id}`);
+  deletarOrganizador(id: number) {
+    return this.http.delete(`${this.api}/deletar-organizador/${id}`);
   }
 }

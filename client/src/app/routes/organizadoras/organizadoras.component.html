@@ -19,7 +19,7 @@
                     <td>
                         <button (click)="habilitarEdicaoHandler(item)" class="btn"> <span><i
                                     [class]="habilitarEdicao ? 'fa-solid fa-times text-primary' : 'fa-solid fa-edit text-primary'"></i></span></button>
-                        <button (click)="excluirOrganizador(item)" class="btn"> <span><i
+                        <button (click)="deletarOrganizador(item)" class="btn"> <span><i
                                     class="fa-solid fa-trash text-danger"></i></span></button>
                     </td>
                 </tr>
@@ -28,7 +28,7 @@
 
                 <tr>
                     <td>
-                        <button (click)=" habilitarEdicao ?  alterarOrganizador() :cadastrarOrganizador() "
+                        <button (click)=" habilitarEdicao ?  editarOrganizador() :cadastrarOrganizador() "
                             class="btn"><span class="text-success"><i
                                     [class]="habilitarEdicao ? 'fa-solid fa-edit':'fa fa-plus'"></i>
                                 {{habilitarEdicao ? 'Alterar Ingresso':'Cadastrar Ingresso'}}</span></button>

@@ -6,8 +6,9 @@ import { Injectable } from '@angular/core';
 })
 export class LoginService {
   constructor(private http: HttpClient) {}
+  api = 'http://localhost:8080/usuario';
 
   validarLogin(form: any) {
-    return this.http.get('', form);
+    return this.http.post(`${this.api}/logar`, form);
   }
 }

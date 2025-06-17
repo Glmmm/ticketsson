@@ -12,14 +12,20 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   constructor(private service: LoginService, private router: Router) {}
   form = new FormGroup({
-    user: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.required),
+    senha: new FormControl('', Validators.required),
   });
 
   validarLogin() {
     if (this.form.valid) {
-      localStorage.setItem('token', this.form.get('user')?.value!);
-      this.router.navigate(['eventos']);
+      this.service.validarLogin(this.form.value).subscribe((response) => {
+        if (response) {
+          localStorage.setItem('token', this.form.get('email')?.value!);
+          this.router.navigate(['eventos']);
+        } else {
+          alert('Usuário não encontrado');
+        }
+      });
     } else {
       localStorage.clear();
       alert('Formulário inválido');

@@ -37,4 +37,4 @@ VALUES (301, 'Ingresso Inteiro', 2, 101, 201),
 
 -- USUARIOS
 INSERT INTO usuario (id, email, senha)
-VALUES (1, 'teste@gmail.com', '12345678')
+VALUES (1, 'teste@gmail.com', '123')
