@@ -52,13 +52,18 @@ export class EventosComponent {
     console.log('Cadastrar Evento:', this.form.value);
   }
 
-  alterarEvento() {
-    console.log('Alterar Evento: ', this.form.value);
+  editarEvento() {
+    this.service.editarEvento(this.form.value).subscribe(() => {
+      console.log('Alterar Evento: ', this.form.value);
+    });
   }
 
-  excluirEvento(item: IEventos) {
+  deletarEvento(item: IEventos) {
     if (confirm(`Deseja Excluir "${item.descricao}"?`)) {
-      console.log('Excluir evento', item.id);
+      this.service.deletarEvento(item.id).subscribe(() => {
+        console.log('Excluir evento', item.id);
+        this.listarEventos();
+      });
     }
   }
 

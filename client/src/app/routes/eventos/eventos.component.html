@@ -14,7 +14,10 @@
                     <td>{{item.id}}</td>
                     <td>{{item.nome}}</td>
                     <td>{{item.descricao}}</td>
-                    <td>{{item.organizador.nome}}</td>
+                    <td>
+                        CORRIGIR NO BACKEND
+                        <!-- {{item.organizador.nome}} -->
+                    </td>
                     <td>{{item.dataInicio}}</td>
                     <td>{{item.dataFim}}</td>
                     <td>{{item.cep}}</td>
@@ -22,7 +25,7 @@
                     <td>
                         <button (click)="habilitarEdicaoHandler(item)" class="btn"> <span><i
                                     [class]="habilitarEdicao ? 'fa-solid fa-times text-primary' :  'fa-solid fa-edit text-primary'"></i></span></button>
-                        <button (click)="excluirEvento(item)" class="btn"> <span><i
+                        <button (click)="deletarEvento(item)" class="btn"> <span><i
                                     class="fa-solid fa-trash text-danger"></i></span></button>
                     </td>
                 </tr>
@@ -30,7 +33,7 @@
             <tfoot>
                 <tr>
                     <td>
-                        <button (click)=" habilitarEdicao ?  alterarEvento() : cadastrarEvento() " class="btn"><span
+                        <button (click)=" habilitarEdicao ?  editarEvento() : cadastrarEvento() " class="btn"><span
                                 class="text-success"><i [class]="habilitarEdicao ? 'fa-solid fa-edit':'fa fa-plus'"></i>
                                 {{habilitarEdicao ? 'Alterar Ingresso':'Cadastrar Ingresso'}}</span></button>
                     </td>

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Eventos } from '../models/mocks/eventos.mock';
 import { IEventos } from '../models/eventos.model';
 
@@ -9,20 +9,21 @@ import { IEventos } from '../models/eventos.model';
 })
 export class EventosService {
   constructor(private http: HttpClient) {}
-
-  listarEventos() {
-    return of(Eventos);
+  api = 'http://localhost:8080/eventos';
+  listarEventos(): Observable<IEventos[]> {
+    return this.http.get<IEventos[]>(`${this.api}/listar-eventos`);
+    // return of(Eventos);
   }
 
-  alterarEvento(evento: IEventos) {
-    return this.http.put('', evento);
+  editarEvento(form: any) {
+    return this.http.put(`${this.api}/editar-evento`, form);
   }
 
-  cadastrarEvento(evento: IEventos) {
-    return this.http.post('', evento);
+  cadastrarEvento(form: any) {
+    return this.http.post(`${this.api}/cadastrar-evento`, form);
   }
 
-  excluirEvento(id: number) {
-    return this.http.delete(`${id}`);
+  deletarEvento(id: number) {
+    return this.http.delete(`/deletar-evento/${id}`);
   }
 }
