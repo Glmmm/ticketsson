@@ -13,7 +13,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class OrganizadorasComponent implements OnInit {
   tableHeader = [
     new header('ID', 'id', 'arrow-down-1-9'),
-    new header('Nome', 'nome', 'user'),
+    new header('Nome', 'nome', 'user-tie'),
     new header('Endereço', 'endereco', 'map-pin'),
     new header('CEP', 'cep', 'map-pin'),
     new header('Telefone', 'telefone', 'phone'),
@@ -48,7 +48,8 @@ export class OrganizadorasComponent implements OnInit {
     if (this.form.valid) {
       this.service.cadastrarOrganizador(this.form.value).subscribe(() => {
         this.listarOrganizadores();
-        console.log('Cadastrar Organizador', this.form.value);
+        this.form.reset();
+        // console.log('Cadastrar Organizador', this.form.value);
       });
     } else {
       alert('Formulario Inválido');
@@ -59,7 +60,8 @@ export class OrganizadorasComponent implements OnInit {
     if (this.form.valid) {
       this.service.editarOrganizador(this.form.value).subscribe(() => {
         this.listarOrganizadores();
-        console.log('Alterar Organizador', this.form.value);
+        this.form.reset();
+        // console.log('Alterar Organizador', this.form.value);
       });
     } else {
       alert('Formulário inválido');
@@ -70,7 +72,7 @@ export class OrganizadorasComponent implements OnInit {
     if (confirm(`Deseja Excluir o "${item.nome}"?`)) {
       this.service.deletarOrganizador(item.id).subscribe(() => {
         this.listarOrganizadores();
-        console.log('Excluir Organizador', item);
+        // console.log('Excluir Organizador', item);
       });
     }
   }

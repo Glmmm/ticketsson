@@ -22,14 +22,10 @@ a {
     color: #126782;
 }
 
-
-
 a:hover {
     transform: scale(1.05);
     transition: .2s;
 }
-
-
 
 .links {
     display: inline-flex;

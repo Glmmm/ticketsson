@@ -15,7 +15,7 @@ public class UsuarioService {
     }
 
     public boolean logarUsuario(FormUsuario dados) {
-        Usuario usuario = usuarioRepository.findByEmail(dados.getEmail()).orElseThrow(() -> new RuntimeException("Usuário não encontrado com o Email: " + dados.getEmail()));
-        return usuario.getSenha().equals(dados.getSenha());
+        Usuario usuario = usuarioRepository.findByEmail(dados.getEmail()).orElse(new Usuario());
+        return usuario.getEmail() != null && usuario.getSenha().equals(dados.getSenha());
     }
 }

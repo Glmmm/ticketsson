@@ -45,7 +45,9 @@ export class IngressosComponent {
   cadastarIngresso() {
     if (this.form.valid) {
       this.service.cadastrarIngresso(this.form.value).subscribe(() => {
-        console.log('Cadastar Ingresso: ', this.form.value);
+        this.listarIngressos();
+        this.form.reset();
+        // console.log('Cadastar Ingresso: ', this.form.value);
       });
     } else {
       alert('Formulário inválido');
@@ -55,7 +57,9 @@ export class IngressosComponent {
   editarIngresso() {
     if (this.form.valid) {
       this.service.editarIngresso(this.form.value).subscribe(() => {
-        console.log('Alterar Ingresso: ', this.form.value);
+        this.listarIngressos();
+        this.form.reset();
+        // console.log('Alterar Ingresso: ', this.form.value);
       });
     } else {
       alert('Formulário inválido');
@@ -66,7 +70,7 @@ export class IngressosComponent {
     if (confirm(`Deseja Excluir "${item.descricao}" de "${item.evento.nome}"?`)) {
       this.service.deletarIngresso(item.id).subscribe(() => {
         this.listarIngressos();
-        console.log('Excluir ingresso', item.id);
+        // console.log('Excluir ingresso', item.id);
       });
     }
   }

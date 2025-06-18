@@ -14,7 +14,7 @@ export class LoginGuard implements CanActivate {
   }
 
   naoPodeAcessar() {
-    alert('Ação não permitida');
+    alert('Usuário não autenticado');
     this.router.navigate(['login']);
     return false;
   }
