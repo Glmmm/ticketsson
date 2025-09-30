@@ -11,9 +11,10 @@
         </div>
     </form>
     <div>
+        <a class="text-center" (click)="handleTypeLogin()">novo por aqui? faça seu cadastro</a>
         <br>
         <button class="btn" (click)="validarLogin()">
-            <i class="fa-solid fa-door-closed"></i> Entrar
+            <i [class]="cadastrar ?'fa-solid fa-user-plus':'fa-solid fa-door-closed'"></i> {{cadastrar ? 'Cadastrar' : 'Entrar' }}
         </button>
     </div>
 </section>

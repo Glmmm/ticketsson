@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { header } from '../../utils/table.util';
+import { header } from '../../../../utils/table.util';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { EventosService } from '../../services/eventos.service';
-import { IEventos } from '../../models/eventos.model';
+import { EventosService } from '../../../../services/eventos.service';
+import { IEventos } from '../../../../models/eventos.model';
 
 @Component({
   selector: 'app-eventos',

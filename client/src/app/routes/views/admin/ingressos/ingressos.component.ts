@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { header } from '../../utils/table.util';
+import { header } from '../../../../utils/table.util';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { IIngressos } from '../../models/ingressos.model';
-import { IngressosService } from '../../services/ingressos.service';
+import { IIngressos } from '../../../../models/ingressos.model';
+import { IngressosService } from '../../../../services/ingressos.service';
 
 @Component({
   selector: 'app-ingressos',

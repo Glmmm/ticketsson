@@ -15,6 +15,7 @@ export class LoginComponent {
     email: new FormControl('', Validators.required),
     senha: new FormControl('', Validators.required),
   });
+  cadastrar = false;
 
   validarLogin() {
     if (this.form.valid) {
@@ -28,7 +29,25 @@ export class LoginComponent {
       });
     } else {
       localStorage.clear();
+      alert('Login inválido');
+    }
+  }
+
+  cadastrarUsuario() {
+    if (this.form.valid) {
+      this.service.cadastraUsuario(this.form.value).subscribe(
+        (response) => {
+          localStorage.setItem('token', this.form.get('email')?.value!);
+        },
+        (error) => {}
+      );
+    } else {
+      localStorage.clear();
       alert('Formulário inválido');
     }
+  }
+
+  handleTypeLogin() {
+    this.cadastrar = !this.cadastrar;
   }
 }

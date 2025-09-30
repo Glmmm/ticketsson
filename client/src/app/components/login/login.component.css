@@ -13,7 +13,12 @@ div {
 
 .btn {
     width: 100%;
-    color: #f7f7f7;
-    padding: 8px;
+    color: #f7f7f7;    padding: 8px;
     background-color: #126782;
+}
+
+a{
+    color: #f7f7f7;
+    cursor: pointer;
+    text-decoration: underline;
 }
