@@ -29,12 +29,12 @@ VALUES (101, 'Festival de Inovação Digital 2025',
         '2025-12-01', '2025-12-01', 'Estúdio Criativo Lumiar, Porto Alegre - RS', '01234-567', 205);
 
 -- INGRESSOS
-INSERT INTO ingresso (id, descricao, qtd, evento_id, organizador_id)
-VALUES (301, 'Ingresso Inteiro', 2, 101, 201),
-       (302, 'Ingresso Vip', 1, 102, 202),
-       (303, 'Ingresso Meia', 3, 103, 203),
-       (304, 'Ingresso Rogers', 5, 104, 204);
+INSERT INTO ingresso (id, descricao, qtd_inicial, qtd_atual, evento_id, organizador_id)
+VALUES (301, 'Ingresso Inteiro', 50, 30, 101, 201),
+       (302, 'Ingresso Vip', 50, 20, 102, 202),
+       (303, 'Ingresso Meia', 50, 40, 103, 203),
+       (304, 'Ingresso Rogers', 50, 10, 104, 204);
 
 -- USUARIOS
-INSERT INTO usuario (id, email, senha)
-VALUES (1, 'teste@gmail.com', '123')
+INSERT INTO usuario (id, nome, email, senha)
+VALUES (1, 'Rogerio Rei', 'teste@gmail.com', '123')

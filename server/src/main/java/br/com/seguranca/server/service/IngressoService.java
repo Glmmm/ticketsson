@@ -14,7 +14,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
-import java.util.function.Function;
 
 @Service
 public class IngressoService {
@@ -53,7 +52,8 @@ public class IngressoService {
         ingresso.setDescricao(dados.getDescricao());
         ingresso.setEvento(evento);
         ingresso.setOrganizador(organizador);
-        ingresso.setQtd(dados.getQtd());
+        ingresso.setQtdInicial(dados.getQtdInicial());
+        ingresso.setQtdAtual(dados.getQtdAtual());
         ingresso = ingressoRepository.save(ingresso);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
@@ -70,7 +70,8 @@ public class IngressoService {
         ingresso.setDescricao(dados.getDescricao());
         ingresso.setEvento(evento);
         ingresso.setOrganizador(organizador);
-        ingresso.setQtd(dados.getQtd());
+        ingresso.setQtdInicial(dados.getQtdInicial());
+        ingresso.setQtdAtual(dados.getQtdAtual());
         ingresso = ingressoRepository.save(ingresso);
         return IngressoDto.converter(ingresso);
     }

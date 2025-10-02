@@ -14,7 +14,8 @@ public class IngressoDto {
 
     private Long id;
     private String descricao;
-    private int qtd;
+    private int qtdInicial;
+    private int qtdAtual;
     private Evento evento;
     private Organizador organizador;
 
@@ -22,7 +23,8 @@ public class IngressoDto {
         return new IngressoDto(
                 ingresso.getId(),
                 ingresso.getDescricao(),
-                ingresso.getQtd(),
+                ingresso.getQtdInicial(),
+                ingresso.getQtdAtual(),
                 ingresso.getEvento(),
                 ingresso.getOrganizador()
         );

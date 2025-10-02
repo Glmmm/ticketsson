@@ -12,5 +12,6 @@ public class FormIngresso {
     private String descricao;
     private Long evento;
     private Long organizador;
-    private int qtd;
+    private int qtdInicial;
+    private int qtdAtual;
 }

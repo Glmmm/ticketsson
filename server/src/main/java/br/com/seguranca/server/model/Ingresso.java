@@ -17,7 +17,9 @@ public class Ingresso {
 
     private String descricao;
 
-    private int qtd;
+    private int qtdInicial;
+    
+    private int qtdAtual;
 
     @ManyToOne
     @JoinColumn(name = "evento_id")
