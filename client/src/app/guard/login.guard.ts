@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
+  CanActivateChild,
   GuardResult,
   MaybeAsync,
   Router,
@@ -11,13 +12,13 @@ import {
 @Injectable({
   providedIn: 'root',
 })
-export class LoginGuard implements CanActivate {
+export class LoginGuard implements CanActivateChild {
   router = inject(Router);
 
   autenticado = false;
   admin = false;
 
-  canActivate(
+  canActivateChild(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): MaybeAsync<GuardResult> {
@@ -33,8 +34,8 @@ export class LoginGuard implements CanActivate {
   }
 
   redirecionarUsuarioInvalido() {
-    this.router.navigate(['login']);
-    alert('Usuário não autenticado');
+    this.router.navigate(['']);
+    alert('Ação não permitida');
     return false;
   }
 

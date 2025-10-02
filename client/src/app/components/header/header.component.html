@@ -4,24 +4,30 @@
   </div>
   <div class="links">
     @if (guard.autenticado && guard.admin) {
-    <a routerLink="/organizadoras"
+    <a routerLink="admin/organizadoras"
       ><i class="fa-solid fa-users"></i><span> organizadoras</span></a
     >
-    <a routerLink="/ingressos"
+    <a routerLink="admin/ingressos"
       ><i class="fa-solid fa-ticket"></i><span> ingressos</span></a
     >
-    <a routerLink="/eventos"
+    <a routerLink="admin/eventos"
       ><i class="fa-solid fa-calendar-days"></i><span> eventos</span></a
+    >
+    } @if (guard.autenticado && !guard.admin) {
+    <a routerLink="user/carrinho"
+      ><i class="fa-solid fa-cart-shopping"></i><span> carrinho</span></a
+    >
+    <a routerLink="user/catalogo"
+      ><i class="fa-solid fa-store"></i><span> catalogo</span></a
+    >
+    <a routerLink="user/perfil"
+      ><i class="fa-solid fa-user"></i><span> perfil</span></a
     >
 
     } @if(guard.autenticado){
     <a (click)="trocarCargo()"
-      ><i
-        [class]="guard.admin ? 'fa-solid fa-user-tie' : 'fa-solid fa-user'"
-      ></i
-      ><span>
-        {{ guard.admin ? "visão administrador" : "visão usuário" }}</span
-      ></a
+      ><i class="fa-solid fa-rotate"></i
+      ><span> {{ guard.admin ? "visão admin" : "visão usuário" }}</span></a
     >
     }
     <a (click)="sair()"

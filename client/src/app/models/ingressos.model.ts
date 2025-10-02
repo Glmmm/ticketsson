@@ -4,7 +4,8 @@ import { IOrganizador } from './organizador.model';
 export interface IIngressos {
   id: number;
   descricao: string;
-  qtd: number;
+  qtdInicial: number;
+  qtdAtual: number;
   evento: IEventos;
   organizador: IOrganizador;
 }

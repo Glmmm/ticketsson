@@ -1,54 +1,84 @@
 <form [formGroup]="form">
+  <div class="table-container">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th *ngFor="let item of tableHeader">
+            <i [class]="'fa-solid fa-' + item.icon"></i> {{ item.header }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of lista">
+          <td>{{ item.id }}</td>
+          <td>{{ item.descricao }}</td>
+          <td>{{ item.evento.nome }}</td>
+          <td>{{ item.organizador.nome }}</td>
+          <td>{{ item.qtdInicial }}</td>
+          <td>{{ item.qtdAtual }}</td>
+          <td>
+            <button (click)="habilitarEdicaoHandler(item)" class="btn">
+              <span
+                ><i
+                  [class]="
+                    habilitarEdicao
+                      ? 'fa-solid fa-times text-primary'
+                      : 'fa-solid fa-edit text-primary'
+                  "
+                ></i
+              ></span>
+            </button>
+            <button (click)="deletarIngresso(item)" class="btn">
+              <span><i class="fa-solid fa-trash text-danger"></i></span>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>
+            <button
+              (click)="habilitarEdicao ? editarIngresso() : cadastarIngresso()"
+              class="btn"
+            >
+              <span class="text-success"
+                ><i
+                  [class]="habilitarEdicao ? 'fa-solid fa-edit' : 'fa fa-plus'"
+                ></i>
+                {{
+                  habilitarEdicao ? "Alterar Ingresso" : "Cadastrar Ingresso"
+                }}</span
+              >
+            </button>
+          </td>
+          <td><input formControlName="descricao" type="text" required /></td>
 
-    <div class="table-container">
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th *ngFor="let item of tableHeader"> <i [class]="'fa-solid fa-'+item.icon"></i> {{item.header}}
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of lista">
-                    <td>{{item.id}}</td>
-                    <td>{{item.descricao}}</td>
-                    <td>{{item.evento.nome}}</td>
-                    <td>{{item.organizador.nome}}</td>
-                    <td>{{item.qtd}}</td>
-                    <td>
-                        <button (click)="habilitarEdicaoHandler(item)" class="btn"> <span><i
-                                    [class]="habilitarEdicao ? 'fa-solid fa-times text-primary' :  'fa-solid fa-edit text-primary'"></i></span></button>
-                        <button (click)="deletarIngresso(item)" class="btn"> <span><i
-                                    class="fa-solid fa-trash text-danger"></i></span></button>
-                    </td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td>
-                        <button (click)=" habilitarEdicao ? editarIngresso() : cadastarIngresso() " class="btn"><span
-                                class="text-success"><i [class]="habilitarEdicao ? 'fa-solid fa-edit':'fa fa-plus'"></i>
-                                {{habilitarEdicao ? 'Alterar Ingresso':'Cadastrar Ingresso'}}</span></button>
-                    </td>
-                    <td><input formControlName="descricao" type="text" required> </td>
-
-                    <td>
-                        <select formControlName="organizador">
-                            <option *ngFor="let item of lista" [value]="item.organizador.id" required>
-                                {{item.organizador.nome}}
-                            </option>
-                        </select>
-                    </td>
-                    <td>
-                        <select formControlName="evento">
-                            <option *ngFor="let item of lista" [value]="item.evento.id" required>
-                                {{item.evento.nome}}
-                            </option>
-                        </select>
-                    </td>
-                    <td><input formControlName="qtd" type="number" required></td>
-                </tr>
-            </tfoot>
-        </table>
-    </div>
+          <td>
+            <select formControlName="organizador">
+              <option
+                *ngFor="let item of lista"
+                [value]="item.organizador.id"
+                required
+              >
+                {{ item.organizador.nome }}
+              </option>
+            </select>
+          </td>
+          <td>
+            <select formControlName="evento">
+              <option
+                *ngFor="let item of lista"
+                [value]="item.evento.id"
+                required
+              >
+                {{ item.evento.nome }}
+              </option>
+            </select>
+          </td>
+          <td><input formControlName="qtdInicial" type="number" required /></td>
+          <td><input formControlName="qtdAtual" type="number" required /></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
 </form>

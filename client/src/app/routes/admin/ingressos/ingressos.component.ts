@@ -16,7 +16,8 @@ export class IngressosComponent {
     new header('Descrição', 'descricao', 'pen'),
     new header('Evento', 'evento', 'user'),
     new header('Organizador', 'organizador', 'user-tie'),
-    new header('Quantidade', 'qtd', 'ticket'),
+    new header('Quantidade Inicial', 'qtdInicial', 'ticket'),
+    new header('Quantidade Atual', 'qtdAtual', 'ticket'),
     new header('Ações', 'acoes', 'cog'),
   ];
   exibirFormulario: boolean = false;
@@ -29,7 +30,8 @@ export class IngressosComponent {
     descricao: new FormControl('', Validators.required),
     evento: new FormControl(0, Validators.required),
     organizador: new FormControl(0, Validators.required),
-    qtd: new FormControl(0, Validators.required),
+    qtdInicial: new FormControl(0, Validators.required),
+    qtdAtual: new FormControl(0, Validators.required),
   });
 
   ngOnInit() {
@@ -47,7 +49,6 @@ export class IngressosComponent {
       this.service.cadastrarIngresso(this.form.value).subscribe(() => {
         this.listarIngressos();
         this.form.reset();
-        // console.log('Cadastar Ingresso: ', this.form.value);
       });
     } else {
       alert('Formulário inválido');
@@ -59,7 +60,6 @@ export class IngressosComponent {
       this.service.editarIngresso(this.form.value).subscribe(() => {
         this.listarIngressos();
         this.form.reset();
-        // console.log('Alterar Ingresso: ', this.form.value);
       });
     } else {
       alert('Formulário inválido');
@@ -72,7 +72,6 @@ export class IngressosComponent {
     ) {
       this.service.deletarIngresso(item.id).subscribe(() => {
         this.listarIngressos();
-        // console.log('Excluir ingresso', item.id);
       });
     }
   }
@@ -84,7 +83,8 @@ export class IngressosComponent {
       this.form.get('descricao')?.setValue(item.descricao);
       this.form.get('evento')?.setValue(item.evento.id);
       this.form.get('organizador')?.setValue(item.organizador.id);
-      this.form.get('qtd')?.setValue(item.qtd);
+      this.form.get('qtdInicial')?.setValue(item.qtdInicial);
+      this.form.get('qtdAtual')?.setValue(item.qtdAtual);
     } else {
       this.form.reset();
     }

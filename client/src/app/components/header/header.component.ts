@@ -20,7 +20,9 @@ export class HeaderComponent {
   }
 
   trocarCargo() {
-    this.router.navigate(['/']);
+    this.guard.admin
+      ? this.router.navigate(['/admin'])
+      : this.router.navigate(['/user']);
     this.guard.trocarTipoUsuario();
   }
 }

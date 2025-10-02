@@ -5,22 +5,45 @@ import { EventosComponent } from './routes/admin/eventos/eventos.component';
 import { LoginGuard } from './guard/login.guard';
 import { LoginComponent } from './components/login/login.component';
 import { IngressosComponent } from './routes/admin/ingressos/ingressos.component';
+import { CarrinhoComponent } from './routes/user/carrinho/carrinho.component';
+import { CatalogoComponent } from './routes/user/catalogo/catalogo.component';
+import { PerfilComponent } from './routes/user/perfil/perfil.component';
 
 const routes: Routes = [
   {
-    path: 'organizadoras',
-    component: OrganizadorasComponent,
-    canActivate: [LoginGuard],
+    path: 'admin',
+    children: [
+      {
+        path: 'organizadoras',
+        component: OrganizadorasComponent,
+      },
+      {
+        path: 'ingressos',
+        component: IngressosComponent,
+      },
+      {
+        path: 'eventos',
+        component: EventosComponent,
+      },
+    ],
+    canActivateChild: [LoginGuard],
   },
   {
-    path: 'ingressos',
-    component: IngressosComponent,
-    canActivate: [LoginGuard],
-  },
-  {
-    path: 'eventos',
-    component: EventosComponent,
-    canActivate: [LoginGuard],
+    path: 'user',
+    children: [
+      {
+        path: 'carrinho',
+        component: CarrinhoComponent,
+      },
+      {
+        path: 'catalogo',
+        component: CatalogoComponent,
+      },
+      {
+        path: 'perfil',
+        component: PerfilComponent,
+      },
+    ],
   },
   { path: 'login', component: LoginComponent },
 ];
