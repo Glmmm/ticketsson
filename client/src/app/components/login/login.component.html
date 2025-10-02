@@ -1,20 +1,30 @@
 <section>
-    <form [formGroup]="form">
-        <div class="input">
-            <label for="user">Usuário:</label>
-            <input type="email" formControlName="email" autocomplete="username" placeholder="Ex: ticketsson@email.com"
-                required>
-        </div>
-        <div class="input">
-            <label for="password">Senha:</label>
-            <input type="password" formControlName="senha" autocomplete="current-password" required>
-        </div>
-    </form>
-    <div>
-        <a class="text-center" (click)="handleTypeLogin()">novo por aqui? faça seu cadastro</a>
-        <br>
-        <button class="btn" (click)="validarLogin()">
-            <i [class]="cadastrar ?'fa-solid fa-user-plus':'fa-solid fa-door-closed'"></i> {{cadastrar ? 'Cadastrar' : 'Entrar' }}
-        </button>
+  <form [formGroup]="form">
+    <div class="input">
+      <label for="user">Usuário:</label>
+      <input
+        type="email"
+        formControlName="email"
+        autocomplete="username"
+        placeholder="Ex: ticketsson@email.com"
+        required
+      />
     </div>
+    <div class="input">
+      <label for="password">Senha:</label>
+      <input
+        type="password"
+        formControlName="senha"
+        autocomplete="current-password"
+        required
+      />
+    </div>
+  </form>
+  <div>
+    <br />
+    <button class="btn" (click)="validarLogin()">
+      <i class="fa-solid fa-door-closed"></i>
+      Entrar
+    </button>
+  </div>
 </section>

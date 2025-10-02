@@ -6,7 +6,7 @@ import { App } from './app';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { RouterLink } from '@angular/router';
-import { OrganizadoraModule } from './routes/views/admin/organizadoras/organizadoras.module';
+import { OrganizadoraModule } from './routes/admin/organizadoras/organizadoras.module';
 import {
   provideHttpClient,
   withFetch,
@@ -14,9 +14,9 @@ import {
 } from '@angular/common/http';
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { EventosModule } from './routes/views/admin/eventos/eventos.module';
+import { EventosModule } from './routes/admin/eventos/eventos.module';
 import { LoginModule } from './components/login/login.module';
-import { IngressosModule } from './routes/views/admin/ingressos/ingressos.module';
+import { IngressosModule } from './routes/admin/ingressos/ingressos.module';
 import { loggingInterceptor } from './guard/interceptors/request.interceptor';
 
 @NgModule({

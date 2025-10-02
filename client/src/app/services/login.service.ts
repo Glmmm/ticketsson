@@ -11,7 +11,4 @@ export class LoginService {
   validarLogin(form: any) {
     return this.http.post(`${this.api}/logar`, form);
   }
-  cadastraUsuario(form: any) {
-    return this.http.post(`${this.api}/cadastrar`, form);
-  }
 }

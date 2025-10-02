@@ -1,6 +1,7 @@
-import { Component, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, inject, OnChanges, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
+import { LoginGuard } from '../../guard/login.guard';
 
 @Component({
   selector: 'app-header',
@@ -9,10 +10,17 @@ import { LoginService } from '../../services/login.service';
   standalone: false,
 })
 export class HeaderComponent {
-  constructor(private router: Router) {}
+  router = inject(Router);
+  guard = inject(LoginGuard);
 
   sair() {
     localStorage.clear();
+    this.guard.autenticado = false;
     this.router.navigate(['login']);
+  }
+
+  trocarCargo() {
+    this.router.navigate(['/']);
+    this.guard.trocarTipoUsuario();
   }
 }

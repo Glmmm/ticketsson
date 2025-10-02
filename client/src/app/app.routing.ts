@@ -1,27 +1,26 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { OrganizadorasComponent } from './routes/views/admin/organizadoras/organizadoras.component';
-import { EventosComponent } from './routes/views/admin/eventos/eventos.component';
+import { OrganizadorasComponent } from './routes/admin/organizadoras/organizadoras.component';
+import { EventosComponent } from './routes/admin/eventos/eventos.component';
 import { LoginGuard } from './guard/login.guard';
 import { LoginComponent } from './components/login/login.component';
-import { IngressosComponent } from './routes/views/admin/ingressos/ingressos.component';
-import { AdminGuard } from './guard/admin.guard';
+import { IngressosComponent } from './routes/admin/ingressos/ingressos.component';
 
 const routes: Routes = [
   {
     path: 'organizadoras',
     component: OrganizadorasComponent,
-    canActivate: [LoginGuard, AdminGuard],
+    canActivate: [LoginGuard],
   },
   {
     path: 'ingressos',
     component: IngressosComponent,
-    canActivate: [LoginGuard, AdminGuard],
+    canActivate: [LoginGuard],
   },
   {
     path: 'eventos',
     component: EventosComponent,
-    canActivate: [LoginGuard, AdminGuard],
+    canActivate: [LoginGuard],
   },
   { path: 'login', component: LoginComponent },
 ];

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { header } from '../../../../utils/table.util';
-import { OrganizadorService } from '../../../../services/organizador.service';
-import { IOrganizador } from '../../../../models/organizador.model';
+import { header } from '../../../utils/table.util';
+import { OrganizadorService } from '../../../services/organizador.service';
+import { IOrganizador } from '../../../models/organizador.model';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({

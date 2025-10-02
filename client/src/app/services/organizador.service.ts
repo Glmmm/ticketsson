@@ -13,7 +13,6 @@ export class OrganizadorService {
 
   listarOrganizadores(): Observable<IOrganizador[]> {
     return this.http.get<IOrganizador[]>(`${this.api}/listar-organizadores`);
-    // return of(Organizadores)
   }
 
   editarOrganizador(form: any) {

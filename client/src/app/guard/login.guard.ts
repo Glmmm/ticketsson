@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
@@ -12,20 +12,33 @@ import {
   providedIn: 'root',
 })
 export class LoginGuard implements CanActivate {
-  constructor(private router: Router) {}
+  router = inject(Router);
+
+  autenticado = false;
+  admin = false;
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): MaybeAsync<GuardResult> {
     const token = localStorage.getItem('token');
     const validacao = token != null;
+    if (validacao) {
+      this.autenticado = true;
+    }
 
-    return validacao ? validacao : this.redirecionarUsuarioInvalido();
+    return validacao && this.admin
+      ? validacao
+      : this.redirecionarUsuarioInvalido();
   }
 
   redirecionarUsuarioInvalido() {
-    alert('Usuário não autenticado');
     this.router.navigate(['login']);
+    alert('Usuário não autenticado');
     return false;
+  }
+
+  trocarTipoUsuario() {
+    this.admin = !this.admin;
   }
 }
