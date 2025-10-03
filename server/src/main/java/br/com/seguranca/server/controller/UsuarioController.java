@@ -22,4 +22,5 @@ public class UsuarioController {
     public ResponseEntity<Boolean> logarUsuario(@RequestBody FormUsuario formUsuario){
         return ResponseEntity.ok().body(usuarioService.logarUsuario(formUsuario));
     }
+
 }

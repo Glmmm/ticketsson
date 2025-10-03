@@ -18,4 +18,5 @@ public class UsuarioService {
         Usuario usuario = usuarioRepository.findByEmail(dados.getEmail()).orElse(new Usuario());
         return usuario.getEmail() != null && usuario.getSenha().equals(dados.getSenha());
     }
+
 }
