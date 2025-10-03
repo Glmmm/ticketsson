@@ -22,6 +22,7 @@ export class EventosComponent {
     new header('CEP', 'cep', 'map-pin'),
     new header('Ações', 'acoes', 'cog'),
   ];
+
   lista = [] as IEventos[];
   exibirFormulario: boolean = false;
   habilitarEdicao: boolean = false;
@@ -52,7 +53,6 @@ export class EventosComponent {
     if (this.form.valid) {
       this.service.cadastrarEvento(this.form.value).subscribe(() => {
         this.listarEventos();
-        // console.log('Cadastrar Evento:', this.form.value);
       });
     } else {
       alert('Formulário inválido');
@@ -64,7 +64,6 @@ export class EventosComponent {
       this.service.editarEvento(this.form.value).subscribe(() => {
         this.listarEventos();
         this.form.reset();
-        // console.log('Alterar Evento: ', this.form.value);
       });
     } else {
       alert('Formulário inválido');
@@ -76,7 +75,6 @@ export class EventosComponent {
       this.service.deletarEvento(item.id).subscribe(() => {
         this.listarEventos();
         this.form.reset();
-        // console.log('Excluir evento', item.id);
       });
     }
   }

@@ -1,1 +1,35 @@
-<p>perfil works!</p>,
+<div class="infos">
+  <div class="infos-user">
+    @if (usuario) { NOME: {{ usuario.nome }} <br />
+    EMAIL: {{ usuario.email }} }
+  </div>
+
+  <div class="infos-tickets">
+    <div class="table-container">
+      <table class="data-table">
+        <thead>
+          <th><i class="fa-solid fa-ticket"></i> reserva</th>
+          <th><i class="fa-solid fa-user"></i> evento</th>
+          <th><i class="fa-solid fa-user-tie"></i> organizadora</th>
+          <th><i class="fa-solid fa-clock"></i> data reserva</th>
+        </thead>
+        <tbody>
+          @for (item of reservas; track $index) {
+          <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.ingresso.evento.nome }}</td>
+            <td>{{ item.ingresso.organizador.nome }}</td>
+            <td>{{ item.dataReserva }}</td>
+          </tr>
+          } @if (!reservas) {
+          <tr>
+            <td class="text-center text-danger" colspan="4">
+              Nenhuma reserva encontrada
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

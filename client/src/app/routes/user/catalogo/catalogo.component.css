@@ -1,0 +1,24 @@
+.card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  min-height: 300px;
+  max-width: 400px;
+  padding: 24px;
+  margin: 24px;
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn {
+  margin-top: auto;
+  color: #f7f7f7;
+  background-color: #126782;
+}

@@ -1,1 +1,26 @@
-<p>eventos works!</p>,
+<div class="card-wrapper">
+  @for (item of ingressos; track $index) {
+  <div class="card">
+    <div class="card-info">
+      <span
+        ><b><i class="fa-solid fa-ticket"></i> {{ item.descricao }}</b>
+      </span>
+      <span>
+        {{ item.evento.nome }}
+        {{ item.evento.descricao }}
+      </span>
+      <span>
+        <i class="fa-solid fa-calendar"></i>
+        {{ item.evento.dataInicio | date : "dd/MM/yyyy" }}
+      </span>
+    </div>
+    <button class="btn">
+      <i class="fa-solid fa-cart-shopping"></i> Reservar
+    </button>
+    <span class="text-center text-danger">
+      restam apenas: {{ item.qtdAtual }} ingressos
+    </span>
+  </div>
+
+  }
+</div>

@@ -9,7 +9,7 @@ import { IOrganizador } from '../models/organizador.model';
 })
 export class OrganizadorService {
   constructor(private http: HttpClient) {}
-  api = 'http://localhost:8080/organizador';
+  private readonly api = 'http://localhost:8080/organizador';
 
   listarOrganizadores(): Observable<IOrganizador[]> {
     return this.http.get<IOrganizador[]>(`${this.api}/listar-organizadores`);

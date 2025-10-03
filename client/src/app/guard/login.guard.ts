@@ -15,7 +15,7 @@ import {
 export class LoginGuard implements CanActivateChild {
   router = inject(Router);
 
-  autenticado = false;
+  autenticado = true;
   admin = false;
 
   canActivateChild(
@@ -23,14 +23,12 @@ export class LoginGuard implements CanActivateChild {
     state: RouterStateSnapshot
   ): MaybeAsync<GuardResult> {
     const token = localStorage.getItem('token');
-    const validacao = token != null;
-    if (validacao) {
-      this.autenticado = true;
+    const valido = token != null;
+    if (!valido) {
+      this.autenticado = false;
     }
 
-    return validacao && this.admin
-      ? validacao
-      : this.redirecionarUsuarioInvalido();
+    return valido || this.admin ? valido : this.redirecionarUsuarioInvalido();
   }
 
   redirecionarUsuarioInvalido() {

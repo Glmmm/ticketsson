@@ -9,7 +9,7 @@ import { IIngressos } from '../models/ingressos.model';
 })
 export class IngressosService {
   constructor(private http: HttpClient) {}
-  api = 'http://localhost:8080/ingresso';
+  private readonly api = 'http://localhost:8080/ingresso';
 
   listarIngressos(): Observable<IIngressos[]> {
     return this.http.get<IIngressos[]>(`${this.api}/listar-ingressos`);

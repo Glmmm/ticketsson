@@ -9,7 +9,7 @@ import { IEventos } from '../models/eventos.model';
 })
 export class EventosService {
   constructor(private http: HttpClient) {}
-  api = 'http://localhost:8080/eventos';
+  private readonly api = 'http://localhost:8080/eventos';
 
   listarEventos(): Observable<IEventos[]> {
     return this.http.get<IEventos[]>(`${this.api}/listar-eventos`);
