@@ -18,7 +18,9 @@ export class PerfilComponent implements OnInit {
   }
 
   listarReservas() {
-    this.service.buscarReservasUsuario(1).subscribe((response) => {
+    const email = localStorage.getItem('token') || '';
+    if (!email) return;
+    this.service.buscarReservasUsuario(email).subscribe((response) => {
       this.reservas = response;
     });
   }

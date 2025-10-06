@@ -1,8 +1,11 @@
 package br.com.seguranca.server.service;
 
+import br.com.seguranca.server.dto.EventoComIngressosDTO;
 import br.com.seguranca.server.dto.EventoDto;
+import br.com.seguranca.server.dto.IngressoDto;
 import br.com.seguranca.server.form.FormEvento;
 import br.com.seguranca.server.model.Evento;
+import br.com.seguranca.server.model.Ingresso;
 import br.com.seguranca.server.model.Organizador;
 import br.com.seguranca.server.repositories.EventoRepository;
 import br.com.seguranca.server.repositories.IngressoRepository;
@@ -30,6 +33,20 @@ public class EventoService {
         List<Evento> eventos = eventoRepository.findAll();
         return eventos.stream().map(EventoDto::converter).toList();
     }
+
+    public List<EventoComIngressosDTO> listarEventosComIngressos() {
+    List<Evento> eventos = eventoRepository.findAll();
+
+    return eventos.stream().map(evento -> {
+        List<Ingresso> ingressos = ingressoRepository.findByEventoId(evento.getId());
+        
+        List<IngressoDto> ingressosDto = ingressos.stream()
+            .map(IngressoDto::converter)
+            .toList();
+
+        return new EventoComIngressosDTO(evento, ingressosDto);
+    }).toList();
+}
 
     public ResponseEntity<?> cadastrarNovoEvento(FormEvento evento) {
         Organizador organizador = organizadorService.buscarOrganizadorPorId(evento.getOrganizador());

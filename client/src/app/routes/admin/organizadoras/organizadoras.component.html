@@ -1,49 +1,79 @@
 <form [formGroup]="form">
-
-    <div class="table-container">
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th *ngFor="let item of tableHeader"> <i [class]="'fa-solid fa-'+item.icon"></i> {{item.header}}
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of lista">
-                    <td>{{item.id}}</td>
-                    <td>{{item.nome}}</td>
-                    <td>{{item.endereco}}</td>
-                    <td>{{item.cep}}</td>
-                    <td>{{item.telefone}}</td>
-                    <td>{{item.email}}</td>
-                    <td>
-                        <button (click)="habilitarEdicaoHandler(item)" class="btn"> <span><i
-                                    [class]="habilitarEdicao ? 'fa-solid fa-times text-primary' : 'fa-solid fa-edit text-primary'"></i></span></button>
-                        <button (click)="deletarOrganizador(item)" class="btn"> <span><i
-                                    class="fa-solid fa-trash text-danger"></i></span></button>
-                    </td>
-                </tr>
-            </tbody>
-            <tfoot>
-
-                <tr>
-                    <td>
-                        <button (click)=" habilitarEdicao ?  editarOrganizador() :cadastrarOrganizador() "
-                            class="btn"><span class="text-success"><i
-                                    [class]="habilitarEdicao ? 'fa-solid fa-edit':'fa fa-plus'"></i>
-                                {{habilitarEdicao ? 'Alterar Ingresso':'Cadastrar Ingresso'}}</span></button>
-                    </td>
-                    <td><input formControlName="nome" type="text"></td>
-                    <td><input formControlName="endereco" type="text"></td>
-                    <td><input formControlName="cep" [value]="form.get('cep')?.value | mask: '99999-999'" type="text"
-                            maxlength="9">
-                    </td>
-                    <td><input formControlName="telefone" [value]="form.get('telefone')?.value | mask:'(99) 99999-9999'"
-                            type="text" maxlength="15"></td>
-                    <td><input formControlName="email" type="email"></td>
-                </tr>
-            </tfoot>
-        </table>
-
-    </div>
+  <div class="table-container">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th *ngFor="let item of tableHeader">
+            <i [class]="'fa-solid fa-' + item.icon"></i> {{ item.header }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of lista">
+          <td>{{ item.id }}</td>
+          <td>{{ item.nome }}</td>
+          <td>{{ item.endereco }}</td>
+          <td>{{ item.cep }}</td>
+          <td>{{ item.telefone }}</td>
+          <td>{{ item.email }}</td>
+          <td>
+            <button (click)="habilitarEdicaoHandler(item)" class="btn">
+              <span
+                ><i
+                  [class]="
+                    habilitarEdicao
+                      ? 'fa-solid fa-times text-primary'
+                      : 'fa-solid fa-edit text-primary'
+                  "
+                ></i
+              ></span>
+            </button>
+            <button (click)="deletarOrganizador(item)" class="btn">
+              <span><i class="fa-solid fa-trash text-danger"></i></span>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>
+            <button
+              (click)="
+                habilitarEdicao ? editarOrganizador() : cadastrarOrganizador()
+              "
+              class="btn"
+            >
+              <span class="text-success"
+                ><i
+                  [class]="habilitarEdicao ? 'fa-solid fa-edit' : 'fa fa-plus'"
+                ></i>
+                {{
+                  habilitarEdicao ? "Alterar Ingresso" : "Cadastrar Ingresso"
+                }}</span
+              >
+            </button>
+          </td>
+          <td><input formControlName="nome" type="text" /></td>
+          <td><input formControlName="endereco" type="text" /></td>
+          <td>
+            <input
+              formControlName="cep"
+              [value]="form.get('cep')?.value | mask : '99999-999'"
+              type="text"
+              maxlength="9"
+            />
+          </td>
+          <td>
+            <input
+              formControlName="telefone"
+              [value]="form.get('telefone')?.value | mask : '(99) 99999-9999'"
+              type="text"
+              maxlength="15"
+            />
+          </td>
+          <td><input formControlName="email" type="email" /></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
 </form>

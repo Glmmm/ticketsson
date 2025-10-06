@@ -3,6 +3,7 @@ package br.com.seguranca.server.service;
 import br.com.seguranca.server.dto.ReservasDTO;
 import br.com.seguranca.server.exception.BusinessException;
 import br.com.seguranca.server.exception.ResourceNotFoundException;
+import br.com.seguranca.server.form.NovaReserva;
 import br.com.seguranca.server.model.Reservas;
 import br.com.seguranca.server.model.Ingresso;
 import br.com.seguranca.server.model.Usuario;
@@ -47,31 +48,34 @@ public class ReservasService {
         return dto;
     }
 
-    @Transactional(readOnly = true)
-    public ReservasDTO criar(ReservasDTO requestDTO) {
-        Ingresso ingresso = ingressoRepository.findById(requestDTO.getIngresso().getId())
+    @Transactional
+    public ReservasDTO criar(NovaReserva form) {
+        System.out.print(form.getEmail());
+        Ingresso ingresso = ingressoRepository.findById(form.getIdIngresso())
                 .orElseThrow(() -> new ResourceNotFoundException(
-                        "Ingresso não encontrado com ID: " + requestDTO.getIngresso().getId()));
+                        "Ingresso não encontrado com ID: " + form.getIdIngresso()));
 
-        Usuario usuario = usuarioRepository.findById(requestDTO.getUsuario().getId())
+        Usuario usuario = usuarioRepository.findByEmail(form.getEmail())
                 .orElseThrow(() -> new ResourceNotFoundException(
-                        "Usuário não encontrado com ID: " + requestDTO.getUsuario().getId()));
+                        "Usuário não encontrado com email: " + form.getEmail()));
 
-        int quantidadeRequerida = requestDTO.getQuantidade();
-
-        if (ingresso.getQtdAtual() < quantidadeRequerida) {
+        if (ingresso.getQtdAtual() < 1) {
             throw new BusinessException(
                     "Não há estoque suficiente. Apenas " + ingresso.getQtdAtual() + " ingressos restantes.");
         }
 
-        ingresso.setQtdAtual(ingresso.getQtdAtual() - quantidadeRequerida);
+        System.out.println("Quantidade atual: " + ingresso.getQtdAtual());
+
+        ingresso.setQtdAtual(ingresso.getQtdAtual() - 1);
+
+        System.out.println("Quantidade agora: " + ingresso.getQtdAtual());
 
         ingressoRepository.save(ingresso);
 
         Reservas reserva = new Reservas();
         reserva.setIngresso(ingresso);
         reserva.setUsuario(usuario);
-        reserva.setQuantidade(quantidadeRequerida);
+        reserva.setQuantidade(1);
         reserva.setDataReserva(LocalDate.now());
 
         Reservas reservaSalva = reservasRepository.save(reserva);
@@ -79,8 +83,8 @@ public class ReservasService {
         return toResponseDTO(reservaSalva);
     }
 
-     public List<ReservasDTO> listarPorUsuarioId(Long usuarioId) {
-        List<Reservas> reservas = reservasRepository.findByUsuarioId(usuarioId);
+     public List<ReservasDTO> listarPorUsuarioEmail(String email) {
+        List<Reservas> reservas = reservasRepository.findAllByUsuario_Email(email);
 
         return reservas.stream()
                 .map(this::toResponseDTO)

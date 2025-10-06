@@ -22,8 +22,8 @@ export class ReservasService {
     return this.http.get(`${this.api}`);
   }
 
-  buscarReservasUsuario(idUsuario: number): Observable<IReservas[]> {
-    return this.http.get<IReservas[]>(`${this.api}/${idUsuario}`);
+  buscarReservasUsuario(email: string): Observable<IReservas[]> {
+    return this.http.get<IReservas[]>(`${this.api}/usuario`, { params: { email } });
   }
 
   excluirReserva(id: number) {

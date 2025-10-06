@@ -1,5 +1,6 @@
 package br.com.seguranca.server.controller;
 
+import br.com.seguranca.server.dto.EventoComIngressosDTO;
 import br.com.seguranca.server.dto.EventoDto;
 import br.com.seguranca.server.form.FormEvento;
 import br.com.seguranca.server.service.EventoService;
@@ -22,6 +23,12 @@ public class EventoController {
     @GetMapping("/listar-eventos")
     public ResponseEntity<List<EventoDto>> listar() {
         return ResponseEntity.ok().body(eventoService.listarEventos());
+    }
+
+      @GetMapping("/com-ingressos")
+    public ResponseEntity<List<EventoComIngressosDTO>> listarComIngressos() {
+        List<EventoComIngressosDTO> eventosComIngressos = eventoService.listarEventosComIngressos();
+        return ResponseEntity.ok(eventosComIngressos);
     }
 
     @PostMapping("/cadastrar-evento")

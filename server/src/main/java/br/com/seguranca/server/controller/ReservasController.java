@@ -1,12 +1,11 @@
 package br.com.seguranca.server.controller;
 
 import br.com.seguranca.server.dto.ReservasDTO;
+import br.com.seguranca.server.form.NovaReserva;
 import br.com.seguranca.server.service.ReservasService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import jakarta.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -20,8 +19,8 @@ public class ReservasController {
     }
 
     @PostMapping
-    public ResponseEntity<ReservasDTO> criarReserva(@RequestBody @Valid ReservasDTO requestDTO) {
-        ReservasDTO responseDTO = reservasService.criar(requestDTO);
+    public ResponseEntity<ReservasDTO> criarReserva(@RequestBody NovaReserva form) {
+        ReservasDTO responseDTO = reservasService.criar(form);
         
         return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
     }
@@ -40,11 +39,11 @@ public class ReservasController {
         return ResponseEntity.ok(reservas);
     }
     
-     @GetMapping("/usuario/{usuarioId}")
+     @GetMapping("/usuario")
     public ResponseEntity<List<ReservasDTO>> listarReservasPorUsuario(
-            @PathVariable Long usuarioId) {
+            @RequestParam String email) {
         
-        List<ReservasDTO> reservas = reservasService.listarPorUsuarioId(usuarioId);
+        List<ReservasDTO> reservas = reservasService.listarPorUsuarioEmail(email);
         
         return ResponseEntity.ok(reservas);
     }

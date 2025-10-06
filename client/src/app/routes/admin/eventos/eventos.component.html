@@ -1,59 +1,110 @@
 <form [formGroup]="form">
-
-    <div class="table-container">
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th *ngFor="let item of tableHeader">
-                        <span><i [class]="'fa-solid fa-'+item.icon"></i> {{item.header}}</span>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of lista">
-                    <td>{{item.id}}</td>
-                    <td>{{item.nome}}</td>
-                    <td>{{item.descricao}}</td>
-                    <td>{{item.organizador.nome}}</td>
-                    <td>{{item.dataInicio | date: 'dd/MM/yyyy'}}</td>
-                    <td>{{item.dataFim| date: 'dd/MM/yyyy'}}</td>
-                    <td>{{item.endereco}}</td>
-                    <td>{{item.cep}}</td>
-                    <td>
-                        <button (click)="habilitarEdicaoHandler(item)" class="btn"> <span><i
-                                    [class]="habilitarEdicao ? 'fa-solid fa-times text-primary' :  'fa-solid fa-edit text-primary'"></i></span></button>
-                        <button (click)="deletarEvento(item)" class="btn"> <span><i
-                                    class="fa-solid fa-trash text-danger"></i></span></button>
-                    </td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td>
-                        <button (click)=" habilitarEdicao ?  editarEvento() : cadastrarEvento() " class="btn"><span
-                                class="text-success"><i [class]="habilitarEdicao ? 'fa-solid fa-edit':'fa fa-plus'"></i>
-                                {{habilitarEdicao ? 'Alterar Ingresso':'Cadastrar Ingresso'}}</span></button>
-                    </td>
-                    <td><input formControlName="nome" type="text" required></td>
-                    <td><textarea formControlName="descricao" type="text" required></textarea> </td>
-                    <td>
-                        <select formControlName="organizador">
-                            <option *ngFor="let item of lista" [value]="item.organizador.id" required>
-                                {{item.organizador.nome}}
-                            </option>
-                        </select>
-                    </td>
-                    <td><input formControlName="dataInicio" [value]="form.get('dataInicio')?.value" type="date"
-                            maxlength="10" required>
-                    </td>
-                    <td><input formControlName="dataFim" [value]="form.get('dataFim')?.value" type="date" maxlength="10"
-                            required></td>
-                    <td><input formControlName="cep" type="text" [value]="form.get('cep')?.value | mask:'99999-999'"
-                            maxlength="9" required></td>
-                    <td><input formControlName="endereco" type="text" required></td>
-                </tr>
-            </tfoot>
-        </table>
-
-    </div>
+  <div class="table-container">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th *ngFor="let item of tableHeader">
+            <span
+              ><i [class]="'fa-solid fa-' + item.icon"></i>
+              {{ item.header }}</span
+            >
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of lista">
+          <td>{{ item.id }}</td>
+          <td>{{ item.nome }}</td>
+          <td>{{ item.descricao }}</td>
+          <td>{{ item.organizador.nome }}</td>
+          <td>{{ item.dataInicio | date : "dd/MM/yyyy" }}</td>
+          <td>{{ item.dataFim | date : "dd/MM/yyyy" }}</td>
+          <td>{{ item.endereco }}</td>
+          <td>{{ item.cep }}</td>
+          <td>
+            <button (click)="habilitarEdicaoHandler(item)" class="btn">
+              <span
+                ><i
+                  [class]="
+                    habilitarEdicao
+                      ? 'fa-solid fa-times text-primary'
+                      : 'fa-solid fa-edit text-primary'
+                  "
+                ></i
+              ></span>
+            </button>
+            <button (click)="deletarEvento(item)" class="btn">
+              <span><i class="fa-solid fa-trash text-danger"></i></span>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>
+            <button
+              (click)="habilitarEdicao ? editarEvento() : cadastrarEvento()"
+              class="btn"
+            >
+              <span class="text-success"
+                ><i
+                  [class]="habilitarEdicao ? 'fa-solid fa-edit' : 'fa fa-plus'"
+                ></i>
+                {{
+                  habilitarEdicao ? "Alterar Ingresso" : "Cadastrar Ingresso"
+                }}</span
+              >
+            </button>
+          </td>
+          <td><input formControlName="nome" type="text" required /></td>
+          <td>
+            <textarea
+              formControlName="descricao"
+              type="text"
+              required
+            ></textarea>
+          </td>
+          <td>
+            <select formControlName="organizador">
+              <option
+                *ngFor="let item of lista"
+                [value]="item.organizador.id"
+                required
+              >
+                {{ item.organizador.nome }}
+              </option>
+            </select>
+          </td>
+          <td>
+            <input
+              formControlName="dataInicio"
+              [value]="form.get('dataInicio')?.value"
+              type="date"
+              maxlength="10"
+              required
+            />
+          </td>
+          <td>
+            <input
+              formControlName="dataFim"
+              [value]="form.get('dataFim')?.value"
+              type="date"
+              maxlength="10"
+              required
+            />
+          </td>
+          <td><input formControlName="endereco" type="text" required /></td>
+          <td>
+            <input
+              formControlName="cep"
+              type="text"
+              [value]="form.get('cep')?.value | mask : '99999-999'"
+              maxlength="9"
+              required
+            />
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
 </form>

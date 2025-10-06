@@ -2,6 +2,9 @@ package br.com.seguranca.server.repositories;
 
 import br.com.seguranca.server.model.Ingresso;
 import jakarta.transaction.Transactional;
+
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -18,4 +21,6 @@ public interface IngressoRepository extends JpaRepository<Ingresso, Long> {
     @Transactional
     @Query("DELETE FROM Ingresso i WHERE i.evento.organizador.id = :organizadorId")
     void deletarIngressosPorOrganizadorId(@Param("organizadorId") Long organizadorId);
+
+      List<Ingresso> findByEventoId(Long eventoId); 
 }

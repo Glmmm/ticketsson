@@ -14,11 +14,8 @@ public class Ingresso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String descricao;
-
     private int qtdInicial;
-    
     private int qtdAtual;
 
     @ManyToOne

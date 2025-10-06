@@ -47,14 +47,7 @@ public class IngressoService {
 
     public ResponseEntity<?> adicionarIngresso(FormIngresso dados) {
         Ingresso ingresso = new Ingresso();
-        Organizador organizador = buscarOrganizadorPorId(dados.getOrganizador());
-        Evento evento = buscarEventoPorId(dados.getEvento());
-        ingresso.setDescricao(dados.getDescricao());
-        ingresso.setEvento(evento);
-        ingresso.setOrganizador(organizador);
-        ingresso.setQtdInicial(dados.getQtdInicial());
-        ingresso.setQtdAtual(dados.getQtdAtual());
-        ingresso = ingressoRepository.save(ingresso);
+        ingresso = getIngresso(dados, ingresso);
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
@@ -63,8 +56,7 @@ public class IngressoService {
         return ResponseEntity.created(location).body(ingresso);
     }
 
-    public IngressoDto alterarIngresso(FormIngresso dados) {
-        Ingresso ingresso = buscarIngressoPorId(dados.getId());
+    private Ingresso getIngresso(FormIngresso dados, Ingresso ingresso) {
         Organizador organizador = buscarOrganizadorPorId(dados.getOrganizador());
         Evento evento = buscarEventoPorId(dados.getEvento());
         ingresso.setDescricao(dados.getDescricao());
@@ -73,6 +65,12 @@ public class IngressoService {
         ingresso.setQtdInicial(dados.getQtdInicial());
         ingresso.setQtdAtual(dados.getQtdAtual());
         ingresso = ingressoRepository.save(ingresso);
+        return ingresso;
+    }
+
+    public IngressoDto alterarIngresso(FormIngresso dados) {
+        Ingresso ingresso = buscarIngressoPorId(dados.getId());
+        ingresso = getIngresso(dados, ingresso);
         return IngressoDto.converter(ingresso);
     }
 
