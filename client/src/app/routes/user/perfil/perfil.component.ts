@@ -12,7 +12,7 @@ import { DatePipe } from '@angular/common';
 })
 export class PerfilComponent implements OnInit {
   private service = inject(ReservasService);
-  reservas?: IReservas[];
+  reservas = [] as IReservas[];
   usuario?: IUsuario;
   ngOnInit() {
     this.listarReservas();

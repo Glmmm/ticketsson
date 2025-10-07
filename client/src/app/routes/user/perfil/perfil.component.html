@@ -1,9 +1,4 @@
 <div class="infos">
-  <div class="infos-user">
-    @if (usuario) { NOME: {{ usuario.nome }} <br />
-    EMAIL: {{ usuario.email }} }
-  </div>
-
   <div class="infos-tickets">
     <div class="table-container">
       <table class="data-table">
@@ -30,9 +25,9 @@
               </button>
             </td>
           </tr>
-          } @if (!reservas) {
+          } @if (!(reservas.length > 0)) {
           <tr>
-            <td class="text-center text-danger" colspan="4">
+            <td class="text-center text-danger" colspan="5">
               Nenhuma reserva encontrada
             </td>
           </tr>

@@ -3,16 +3,19 @@
     <table class="data-table">
       <thead>
         <tr>
-          <th *ngFor="let item of tableHeader">
+          @for (item of tableHeader; track $index) {
+          <th>
             <span
               ><i [class]="'fa-solid fa-' + item.icon"></i>
               {{ item.header }}</span
             >
           </th>
+          }
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of lista">
+        @for (item of lista; track $index) {
+        <tr>
           <td>{{ item.id }}</td>
           <td>{{ item.nome }}</td>
           <td>{{ item.descricao }}</td>
@@ -38,6 +41,7 @@
             </button>
           </td>
         </tr>
+        }
       </tbody>
       <tfoot>
         <tr>
@@ -66,13 +70,11 @@
           </td>
           <td>
             <select formControlName="organizador">
-              <option
-                *ngFor="let item of lista"
-                [value]="item.organizador.id"
-                required
-              >
+              @for (item of lista; track $index) {
+              <option [value]="item.organizador.id" required>
                 {{ item.organizador.nome }}
               </option>
+              }
             </select>
           </td>
           <td>
