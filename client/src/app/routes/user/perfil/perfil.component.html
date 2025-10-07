@@ -12,14 +12,23 @@
           <th><i class="fa-solid fa-user"></i> evento</th>
           <th><i class="fa-solid fa-user-tie"></i> organizadora</th>
           <th><i class="fa-solid fa-clock"></i> data reserva</th>
+          <th><i class="fa-solid fa-cog"></i> opções</th>
         </thead>
         <tbody>
-          @for (item of reservas; track $index) {
+          @for (reserva of reservas; track $index) {
           <tr>
-            <td>{{ item.id }}</td>
-            <td>{{ item.ingresso.evento.nome }}</td>
-            <td>{{ item.ingresso.organizador.nome }}</td>
-            <td>{{ item.dataReserva }}</td>
+            <td>{{ reserva.id }}</td>
+            <td>{{ reserva.ingresso.evento.nome }}</td>
+            <td>{{ reserva.ingresso.organizador.nome }}</td>
+            <td>{{ reserva.dataReserva | date : "dd/MM/yyyy" }}</td>
+            <td>
+              <button
+                class="btn btn-outline-danger"
+                (click)="cancelarReserva(reserva)"
+              >
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </td>
           </tr>
           } @if (!reservas) {
           <tr>
