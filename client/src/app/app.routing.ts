@@ -5,7 +5,6 @@ import { EventosComponent } from './routes/admin/eventos/eventos.component';
 import { LoginGuard } from './guard/login.guard';
 import { LoginComponent } from './components/login/login.component';
 import { IngressosComponent } from './routes/admin/ingressos/ingressos.component';
-import { CarrinhoComponent } from './routes/user/carrinho/carrinho.component';
 import { CatalogoComponent } from './routes/user/catalogo/catalogo.component';
 import { PerfilComponent } from './routes/user/perfil/perfil.component';
 
@@ -31,10 +30,6 @@ const routes: Routes = [
   {
     path: 'user',
     children: [
-      {
-        path: 'carrinho',
-        component: CarrinhoComponent,
-      },
       {
         path: 'catalogo',
         component: CatalogoComponent,

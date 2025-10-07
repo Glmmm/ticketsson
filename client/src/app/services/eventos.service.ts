@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Eventos } from '../models/mocks/eventos.mock';
 import { IEventos } from '../models/eventos.model';
+import { IEventosComIngressos } from '../models/eventos-com-ingressos.model';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,10 @@ export class EventosService {
 
   listarEventos(): Observable<IEventos[]> {
     return this.http.get<IEventos[]>(`${this.api}/listar-eventos`);
-    // return of(Eventos);
+  }
+
+  listarEventosComIngressos(): Observable<IEventosComIngressos[]> {
+    return this.http.get<IEventosComIngressos[]>(`${this.api}/com-ingressos`);
   }
 
   editarEvento(form: any) {

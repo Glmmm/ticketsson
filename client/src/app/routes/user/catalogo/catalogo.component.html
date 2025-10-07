@@ -1,26 +1,61 @@
 <div class="card-wrapper">
-  @for (item of ingressos; track $index) {
+  @for (evento of eventosComIngressos; track $index) {
   <div class="card">
     <div class="card-info">
-      <span
-        ><b><i class="fa-solid fa-ticket"></i> {{ item.descricao }}</b>
-      </span>
       <span>
-        {{ item.evento.nome }}
-        {{ item.evento.descricao }}
+        <p>
+          <b>{{ evento.nome }}</b>
+        </p>
+        <p>{{ evento.descricao }}</p>
+        <p>
+          <i class="fa-solid fa-clock"></i>
+          {{ evento.dataInicio | date : "dd/MM/yyyy" }}
+        </p>
+        <p><i class="fa-solid fa-map-pin"></i> {{ evento.endereco }}</p>
       </span>
-      <span>
-        <i class="fa-solid fa-calendar"></i>
-        {{ item.evento.dataInicio | date : "dd/MM/yyyy" }}
-      </span>
-    </div>
-    <button class="btn" (click)="reservarIngresso(item)">
-      <i class="fa-solid fa-cart-shopping"></i> Reservar
-    </button>
-    <span class="text-center text-danger">
-      restam apenas: {{ item.qtdAtual }} ingressos
-    </span>
-  </div>
 
+      <select [(ngModel)]="ingresso">
+        @for (ingresso of evento.ingressos; track $index) {
+        <option
+          [value]="ingresso.id"
+          (click)="selecionarIngresso(ingresso)"
+          required
+        >
+          {{ ingresso.descricao }}
+        </option>
+
+        }
+      </select>
+
+      @if (ingressoSelecionado && evento.id == ingressoSelecionado.evento.id ) {
+      <button
+        [disabled]="!ingressoSelecionado"
+        (click)="reservarIngresso(ingressoSelecionado)"
+        [class]="
+          evento.ingressos.length > 0
+            ? 'btn btn-primary mt-3'
+            : 'btn btn-outline-secondary mt-3'
+        "
+      >
+        <i
+          [class]="
+            evento.ingressos.length > 0
+              ? 'fa-solid fa-cart-shopping'
+              : 'fa-solid fa-ban'
+          "
+        ></i>
+        {{
+          evento.ingressos.length > 0
+            ? "reservar ingresso"
+            : "ingessos esgotados"
+        }}
+      </button>
+
+      <span class="text-danger text-center">
+        <b> restam apenas: {{ ingressoSelecionado.qtdAtual }}</b>
+      </span>
+      }
+    </div>
+  </div>
   }
 </div>

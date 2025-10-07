@@ -1,29 +1,28 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { DatePipe } from '@angular/common';
-import { IngressosService } from '../../../services/ingressos.service';
+import { CommonModule, DatePipe } from '@angular/common';
 import { IIngressos } from '../../../models/ingressos.model';
 import { ReservasService } from '../../../services/reservas.service';
+import { EventosService } from '../../../services/eventos.service';
+import { IEventosComIngressos } from '../../../models/eventos-com-ingressos.model';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-catalogo',
-  imports: [DatePipe],
+  imports: [DatePipe, FormsModule, CommonModule],
   templateUrl: './catalogo.component.html',
   styleUrl: './catalogo.component.css',
 })
 export class CatalogoComponent implements OnInit {
-  service = inject(IngressosService);
+  service = inject(EventosService);
   serviceReserva = inject(ReservasService);
-  ingressos?: IIngressos[];
+  eventosComIngressos?: IEventosComIngressos[];
+  ingresso?: IIngressos;
+  ingressoSelecionado?: IIngressos;
 
   ngOnInit() {
-    this.listarIngressos();
+    this.listarEventosComIngressos();
   }
 
-  /**
-   * 
-   * @description Função para reservar ingresso
-   * @param item - Ingresso selecionado
-   */
   public reservarIngresso(item: IIngressos): void {
     if (!item || !item.id) {
       return;
@@ -31,15 +30,29 @@ export class CatalogoComponent implements OnInit {
     const form = {
       email: localStorage.getItem('token') || '',
       idIngresso: item.id,
-    }
-    this.serviceReserva.cadastrarReserva(form).subscribe(() => {
-      this.listarIngressos();
+    };
+    this.serviceReserva.cadastrarReserva(form).subscribe(
+      () => {
+        this.ingresso = undefined;
+        this.ingressoSelecionado = undefined;
+        this.listarEventosComIngressos();
+        alert('Ingresso reservado com sucesso');
+      },
+      (error) => {
+        alert(error.error.message);
+        this.ingresso = undefined;
+        this.ingressoSelecionado = undefined;
+      }
+    );
+  }
+
+  listarEventosComIngressos() {
+    this.service.listarEventosComIngressos().subscribe((response) => {
+      this.eventosComIngressos = response;
     });
   }
 
-  listarIngressos() {
-    this.service.listarIngressos().subscribe((response) => {
-      this.ingressos = response;
-    });
+  selecionarIngresso(value: IIngressos) {
+    this.ingressoSelecionado = value;
   }
 }

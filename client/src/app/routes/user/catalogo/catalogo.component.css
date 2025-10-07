@@ -8,6 +8,7 @@
 .card {
   min-height: 300px;
   max-width: 400px;
+  border-radius: 8px;
   padding: 24px;
   margin: 24px;
 }
@@ -19,6 +20,5 @@
 
 .btn {
   margin-top: auto;
-  color: #f7f7f7;
-  background-color: #126782;
+  border-radius: 8px;
 }
