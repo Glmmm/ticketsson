@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
   standalone: false,
 })
 export class FooterComponent {
-  linkGithub = 'https://github.com/Glmmm/ticketsson';
-  linkFigma = 'https://www.figma.com/design/NgCLZttXNaFboW9lUGFgEv/Site-Tickets--Almir-?node-id=31-375&t=ZBjsSSizlGUZG0VI-1';
+  readonly linkGithub = 'https://github.com/Glmmm/ticketsson';
+  readonly linkFigma =
+    'https://www.figma.com/design/NgCLZttXNaFboW9lUGFgEv/Site-Tickets--Almir-?node-id=31-375&t=ZBjsSSizlGUZG0VI-1';
 }

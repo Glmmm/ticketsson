@@ -27,7 +27,7 @@ export class LoginComponent {
           this.guard.autenticado = true;
           this.router.navigate(['/']);
         } else {
-          alert('Usuário não encontrado');
+          alert('Login inválido');
         }
       });
     } else {
