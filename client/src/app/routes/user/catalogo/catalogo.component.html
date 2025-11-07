@@ -54,6 +54,8 @@
       <span class="text-danger text-center">
         <b> restam apenas: {{ ingressoSelecionado.qtdAtual }}</b>
       </span>
+      } @if(evento.ingressos.length == 0){
+      <span class="text-secondary text-center">Ingressos esgotados</span>
       }
     </div>
   </div>

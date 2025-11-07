@@ -39,6 +39,7 @@ const routes: Routes = [
         component: PerfilComponent,
       },
     ],
+    canActivateChild: [LoginGuard],
   },
   { path: 'login', component: LoginComponent },
 ];

@@ -24,15 +24,16 @@ export class LoginGuard implements CanActivateChild {
   ): MaybeAsync<GuardResult> {
     const token = localStorage.getItem('token');
     const valido = token != null;
+
     if (!valido) {
       this.autenticado = false;
     }
 
-    return valido || this.admin ? valido : this.redirecionarUsuarioInvalido();
+    return valido || this.redirecionarUsuarioInvalido();
   }
 
   redirecionarUsuarioInvalido() {
-    this.router.navigate(['']);
+    this.router.navigate(['/login']);
     alert('Ação não permitida');
     return false;
   }
